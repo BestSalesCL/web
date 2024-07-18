@@ -31,7 +31,7 @@ export const FaqsData: Faqs[] = [
   },
   {
     title:
-      "05 - ¿Qué información necesitamos de para poder empezar?",
+      "05 - ¿Qué información necesitamos de ustedes para poder empezar?",
     content:
       "Necesitamos información sobre tus objetivos de negocio, tu público objetivo, tus competidores, y acceso a tus cuentas de redes sociales y sitio web.",
     value: "question-5",
