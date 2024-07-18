@@ -26,10 +26,10 @@ const DownloadApp = () => {
         <Image src={stars} alt="five stars review" />
 
         <p className="subtitle px-4 text-center text-black sm:px-0">
-          People are loving our app
+          Empresas creando contenido
         </p>
         <p className="text-20 max-w-[280px] px-4 text-center text-black sm:px-0">
-          The best way to achieve your <br /> athletic goals
+          La mejor manera de aumentar <br /> tus ventas
         </p>
       </div>
       <div className="flex-center-col size-fit gap-3">

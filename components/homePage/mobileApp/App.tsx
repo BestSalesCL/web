@@ -19,7 +19,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="h2-big md:h1-small text-left text-background_color"
         >
-          The Ultimate App Every Athlete Needs
+          La Herramienta Que Todas Las Empresas Necesitan.
         </m.h2>
         <div className="flex-center-col h-auto w-full gap-[40px] sm:flex-row sm:justify-start md:flex-row">
           <DownloadApp />
