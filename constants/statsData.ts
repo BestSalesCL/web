@@ -41,7 +41,7 @@ export const StatsData: Stats[] = [
     name: "Mensajes Recibidos",
     image: experience,
     alt: "years of experience icon",
-    number: 20.000,
+    number: 20000,
     pre: "+",
   },
   {
