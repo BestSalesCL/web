@@ -18,7 +18,7 @@ export const FaqsData: Faqs[] = [
     value: "question-2",
   },
   {
-    title: "03 - ¿Cuál es su proceso de trabajo?",
+    title: "03 - ¿Cuál es nuestro proceso de trabajo?",
     content:
       "Nuestro proceso incluye Investigación de la Competencia, planificación estratégica, implementación de campañas, monitoreo y optimización continua.",
     value: "question-3",
@@ -31,7 +31,7 @@ export const FaqsData: Faqs[] = [
   },
   {
     title:
-      "05 - ¿Qué información necesitan de mi parte para empezar?",
+      "05 - ¿Qué información necesitamos de para poder empezar?",
     content:
       "Necesitamos información sobre tus objetivos de negocio, tu público objetivo, tus competidores, y acceso a tus cuentas de redes sociales y sitio web.",
     value: "question-5",
@@ -52,21 +52,21 @@ export const FaqsData: Faqs[] = [
   },
   {
     title:
-      "08 - ¿Cómo garantizan la calidad de su trabajo?",
+      "08 - ¿Cómo garantizamos la calidad de nuestro trabajo?",
     content:
       "Tenemos una política que garantiza que, si luego de 30 días de la contratación de nuestros servicios se demuestra que se aplicaron los conceptos aplicados pero las ventas de las campañas de publicidad en Facebook e Instagram no presentan incrementos, se devolverá el 100% del dinero.",
     value: "question-8",
   },
   {
     title:
-      "09 - ¿Cuál es el costo de sus servicios?",
+      "09 - ¿Cuál es el costo de los servicios?",
     content:
       "Los costos varían según el presupuesto invertido, generalmente entre un 5% y un 20%.",
     value: "question-9",
   },
   {
     title:
-      "10 - ¿Qué tipo de empresas han trabajado con ustedes?",
+      "10 - ¿Qué tipo de empresas han trabajado con nosotros?",
     content:
       "Hemos trabajado con una variedad de empresas, desde startups hasta grandes corporaciones, en sectores como retail, tecnología, salud, finanzas e incluso marcas personales.",
     value: "question-10",
