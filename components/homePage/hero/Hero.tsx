@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
           className="flex-center-col max-w-[256px] gap-6 sm:max-w-[640px] sm:gap-5"
         >
           <h1 className="h1-small md:h1-big text-left text-text_color sm:text-center">
-            The Future of Online Training for Athletes1
+            The Future of Online Training for Athletes11
           </h1>
           <p className="subtitle text-text_400">Improve in your sport</p>
         </m.div>
