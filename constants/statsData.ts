@@ -37,17 +37,17 @@ export const StatsData: Stats[] = [
     pre: "+",
   },
   {
-    name: "Años de Experiencia",
-    image: earth,
-    alt: "earth icon",
-    number: 173,
-    pre: "",
-  },
-  {
     name: "Conversaciones",
     image: experience,
     alt: "years of experience icon",
     number: 10,
     pre: "+",
+  },
+  {
+    name: "Años de Experiencia",
+    image: earth,
+    alt: "earth icon",
+    number: 173,
+    pre: "",
   },
 ];
