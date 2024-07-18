@@ -1,7 +1,7 @@
-import card1 from "@/public/assets/images/card-1.avif";
-import card2 from "@/public/assets/images/card-2.avif";
-import card3 from "@/public/assets/images/card-3.avif";
-import card4 from "@/public/assets/images/card-4.avif";
+import card1 from "@/public/assets/images/1.avif";
+import card2 from "@/public/assets/images/2.avif";
+import card3 from "@/public/assets/images/3.avif";
+import card4 from "@/public/assets/images/4.avif";
 import { StaticImageData } from "next/image";
 
 type Services = {
