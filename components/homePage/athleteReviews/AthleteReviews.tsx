@@ -39,7 +39,7 @@ const AthleteReviews = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="h2-small md:h1-small max-w-[525px] text-center text-text_color md:max-w-[750px]"
         >
-          BestLevel Scholarship Recipients Who Have Already Tested Our Method.
+          Lo que otras personas tienen que decir sobre nosotros.
         </m.h2>
 
         {/* Carousel component */}
