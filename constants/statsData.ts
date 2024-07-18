@@ -24,15 +24,15 @@ export const StatsData: Stats[] = [
   },
   {
     name: "Clientes Captados",
-    image: sports,
+    image: stats,
     alt: "sports icon",
     number: 2.5,
-    scale: "M",
+    scale: "M",sports
     pre: "+",
   },
   {
     name: "Campañas Creadas",
-    image: stats,
+    image: sports,
     alt: "variable stats icon",
     number: 73,
 
