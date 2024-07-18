@@ -27,7 +27,7 @@ export const StatsData: Stats[] = [
     image: stats,
     alt: "sports icon",
     number: 2.5,
-    scale: "M",sports
+    scale: "M",
     pre: "+",
   },
   {
