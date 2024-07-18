@@ -19,35 +19,36 @@ export const StatsData: Stats[] = [
     name: "Anuncios Activos",
     image: dumbbell,
     alt: "dumbbell icon",
-    number: 1722,
+    number: 2000,
     pre: "+",
   },
   {
     name: "Clientes Captados",
     image: sports,
     alt: "sports icon",
-    number: 75,
-  },
-  {
-    name: "Campañas Creadas",
-    image: stats,
-    alt: "variable stats icon",
     number: 2.5,
     scale: "M",
     pre: "+",
   },
   {
+    name: "Campañas Creadas",
+    image: stats,
+    alt: "variable stats icon",
+    number: 73,
+
+  },
+  {
     name: "Conversaciones",
     image: experience,
     alt: "years of experience icon",
-    number: 10,
+    number: 20.000,
     pre: "+",
   },
   {
     name: "Años de Experiencia",
     image: earth,
     alt: "earth icon",
-    number: 173,
-    pre: "",
+    number: 16,
+
   },
 ];
