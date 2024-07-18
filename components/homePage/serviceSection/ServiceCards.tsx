@@ -57,7 +57,7 @@ const ServiceCards = () => {
                   href="/workouts"
                   className="flex-center size-full text-text_color hover:text-background_color"
                 >
-                  <p className="text-20-bold">Claim Now</p>
+                  <p className="text-20-bold">Contáctanos</p>
                 </Link>
               </Button>
             </div>

@@ -15,36 +15,36 @@ type Services = {
 export const ServiceCardsData: Services[] = [
   {
     // Change the title text
-    title: "Free Ebook",
+    title: "Consulta GRATIS",
     cardNumber: "01 ",
     // Change the description text to add a description about the service you are offering
     description:
-      "Download our ebook on health and training so you can learn the basics",
+      "Contáctanos para obtener una consulta totalmente gratuita, en la que te explicaremos cómo aplicar estrategias de adquisición de clientes adaptadas a tu empresa y contexto, que incrementarán el tráfico y las ventas.",
     image: card1,
-    alt: "strong man doing pushups in the gym",
+    alt: "people in a meeting",
   },
   {
-    title: "Football Training Program",
+    title: "Manejo de Campañas",
     cardNumber: "02 ",
     description:
-      "Use our mobile app and train for 1 full month with a physical training plan focused on football and your particular position.",
+      "Ideal si estás interesado en optimizar o crear campañas de marketing enfocadas en establecer ciclos de adquisición efectivos. Estas campañas te permitirán fidelizar a tus clientes actuales, captar nuevos y generar más ventas a corto y mediano plazo.",
     image: card2,
-    alt: "athletic woman training in the gym",
+    alt: "facebook ads dashboard",
   },
   {
-    title: "Basketball Training Program",
+    title: "Creacion de Contenido",
     cardNumber: "03 ",
     description:
-      "Download our mobile app and enjoy a complimentary month-long physical training program specifically for basketball and your unique position.",
+      "Diseñado si deseas crear contenido dinámico para tus campañas que aborde los sesgos psicológicos de los consumidores y sus motivaciones de compra, es esencial contar con un equipo de grabación y edición profesional. Podemos ayudarte a lograrlo.",
     image: card3,
-    alt: "man practicing box in the ring",
+    alt: "woman making recording herself",
   },
   {
-    title: "Golf Training Program",
+    title: "Asesoria de Marketing",
     cardNumber: "04 ",
     description:
-      "Install our mobile app and receive a full month of specialized golf training designed to enhance your performance on the golf course.",
+      "Perfecto, si deseas obtener una guía y orientación sobre cómo desarrollar una estrategia de marketing efectiva para captar más clientes, fidelizar a los actuales o construir una imagen de marca sólida y reconocida en el mercado, estamos aquí para ayudarte.",
     image: card4,
-    alt: "people in a crossfit session",
+    alt: "people in a presentation",
   },
 ];

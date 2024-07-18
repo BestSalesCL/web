@@ -18,7 +18,7 @@ const Services = () => {
         viewport={{ once: true, amount: 0.3 }}
         className="h2-small md:h1-small text-center text-text_color"
       >
-        Achieve your Best Level
+        Aumenta tus ventas
       </m.h2>
       {/* Component where the grid of cards is displayed */}
       <ServiceCards />
