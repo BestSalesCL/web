@@ -19,7 +19,7 @@ const Faqs = () => {
       >
         {/* Title */}
         <h2 className="h2-big md:h1-small text-left text-text_color">
-          Common Questions (FAQs)
+          Preguntas Frecuentes (FAQs)
         </h2>
         <QuestionAccordion />
       </m.div>
