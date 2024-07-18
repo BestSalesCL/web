@@ -1,8 +1,8 @@
-import dumbbell from "@/public/assets/icons/dumbbell.svg";
-import sports from "@/public/assets/icons/sports.svg";
-import stats from "@/public/assets/icons/megafono.svg";
-import earth from "@/public/assets/icons/tiempo-adelante.svg";
-import experience from "@/public/assets/icons/mensajes.svg";
+import dumbbell from "@/public/assets/icons/stat1.svg";
+import sports from "@/public/assets/icons/stat2.svg";
+import stats from "@/public/assets/icons/stat3.svg";
+import earth from "@/public/assets/icons/stat4.svg";
+import experience from "@/public/assets/icons/stat5.svg";
 import { StaticImageData } from "next/image";
 
 type Stats = {
