@@ -2,7 +2,7 @@ import dumbbell from "@/public/assets/icons/dumbbell.svg";
 import sports from "@/public/assets/icons/sports.svg";
 import stats from "@/public/assets/icons/variables.svg";
 import earth from "@/public/assets/icons/earth.svg";
-import experience from "@/public/assets/icons/experience.svg";
+import experience from "@/public/assets/icons/mensajes.svg";
 import { StaticImageData } from "next/image";
 
 type Stats = {
@@ -16,20 +16,20 @@ type Stats = {
 
 export const StatsData: Stats[] = [
   {
-    name: "Excercises",
+    name: "Anuncios Activos",
     image: dumbbell,
     alt: "dumbbell icon",
     number: 1722,
     pre: "+",
   },
   {
-    name: "Sports",
+    name: "Clientes Captados",
     image: sports,
     alt: "sports icon",
     number: 75,
   },
   {
-    name: "Variables Tracked",
+    name: "Campañas Creadas",
     image: stats,
     alt: "variable stats icon",
     number: 2.5,
@@ -37,14 +37,14 @@ export const StatsData: Stats[] = [
     pre: "+",
   },
   {
-    name: "Different Countries",
+    name: "Años de Experiencia",
     image: earth,
     alt: "earth icon",
     number: 173,
-    pre: "+",
+    pre: "",
   },
   {
-    name: "Years of Experience",
+    name: "Conversaciones",
     image: experience,
     alt: "years of experience icon",
     number: 10,
