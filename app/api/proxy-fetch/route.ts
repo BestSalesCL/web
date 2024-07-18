@@ -3,7 +3,7 @@ import { list } from "@vercel/blob";
 
 export async function GET(request: NextRequest) {
   const fileName1 = "hero-video-7IY1lCEfdv29bejqMx3E2MUdaJnIjr-c1TQlqIQehqVaIBe2sVtjks3qdCnWt.mp4";
-  const fileName2 = "app-video-7vO0ziNVbCwaOoUFRz99tUPHOA5YqO-Gd8gt6qtqteI7bTB8B5sqIqVws57oa.mp4"; //https://5tcknvsb7xfgvlvf.public.blob.vercel-storage.com/app-video-7vO0ziNVbCwaOoUFRz99tUPHOA5YqO-Gd8gt6qtqteI7bTB8B5sqIqVws57oa.mp4
+  const fileName2 = "app-video-7vO0ziNVbCwaOoUFRz99tUPHOA5YqO-Gd8gt6qtqteI7bTB8B5sqIqVws57oa.mp4"; 
 
   if (!fileName1 || !fileName2) {
     return NextResponse.json({ error: "Invalid file names" }, { status: 400 });
