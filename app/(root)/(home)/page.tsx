@@ -10,6 +10,7 @@ import { Reviews } from "@/components/homePage/videoReviews/Reviews";
 import { Faqs } from "@/components/homePage/faqs/Faqs";
 import { LazyMotion, domAnimation } from "framer-motion";
 
+// a
 export default function Home() {
   return (
     <section className="flex-center-col size-full overflow-hidden">
