@@ -20,7 +20,7 @@ export const ServiceCardsData: Services[] = [
     // Change the description text to add a description about the service you are offering
     description:
       "Contáctanos para obtener una consulta totalmente gratuita, en la que te explicaremos cómo aplicar estrategias de adquisición de clientes adaptadas a tu empresa y contexto, que incrementarán el tráfico y las ventas.",
-    image: card1,
+    image: card2,
     alt: "people in a meeting",
   },
   {
@@ -28,7 +28,7 @@ export const ServiceCardsData: Services[] = [
     cardNumber: "02 ",
     description:
       "Ideal si estás interesado en optimizar o crear campañas de marketing enfocadas en establecer ciclos de adquisición efectivos. Estas campañas te permitirán fidelizar a tus clientes actuales, captar nuevos y generar más ventas a corto y mediano plazo.",
-    image: card2,
+    image: card4,
     alt: "facebook ads dashboard",
   },
   {
@@ -44,7 +44,7 @@ export const ServiceCardsData: Services[] = [
     cardNumber: "04 ",
     description:
       "Perfecto, si deseas obtener una guía y orientación sobre cómo desarrollar una estrategia de marketing efectiva para captar más clientes, fidelizar a los actuales o construir una imagen de marca sólida y reconocida en el mercado, estamos aquí para ayudarte.",
-    image: card4,
+    image: card1,
     alt: "people in a presentation",
   },
 ];
