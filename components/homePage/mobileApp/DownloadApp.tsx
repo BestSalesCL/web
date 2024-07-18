@@ -29,7 +29,7 @@ const DownloadApp = () => {
           Empresas creando contenido
         </p>
         <p className="text-20 max-w-[280px] px-4 text-center text-black sm:px-0">
-          La mejor manera de aumentar <br /> tus ventas
+          La mejor manera de aumentar tus ventas
         </p>
       </div>
       <div className="flex-center-col size-fit gap-3">
