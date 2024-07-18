@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { list } from "@vercel/blob";
 
 export async function GET(request: NextRequest) {
-  const fileName1 = "hero-video-7IY1lCEfdv29bejqMx3E2MUdaJnIjr-c1TQlqIQehqVaIBe2sVtjks3qdCnWt.mp4";
+  const fileName1 = "intro-kVXNsFug0OGb40llKnMk2QZEU9jc61.mp4";
   const fileName2 = "app-video-7vO0ziNVbCwaOoUFRz99tUPHOA5YqO-Gd8gt6qtqteI7bTB8B5sqIqVws57oa.mp4"; 
 
   if (!fileName1 || !fileName2) {
