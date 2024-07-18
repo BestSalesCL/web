@@ -38,7 +38,7 @@ export const StatsData: Stats[] = [
 
   },
   {
-    name: "Conversaciones",
+    name: "Mensajes Recibidos",
     image: experience,
     alt: "years of experience icon",
     number: 20.000,
