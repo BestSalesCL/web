@@ -7,25 +7,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image from "next/image";
-import appPic1 from "@/public/assets/images/app-image-1.avif";
-import appPic2 from "@/public/assets/images/app-image-2.avif";
-import appPic3 from "@/public/assets/images/app-image-3.avif"; // Nueva imagen 1
-import appPic4 from "@/public/assets/images/app-image-4.avif"; // Nueva imagen 2
 import { fadeIn, show } from "@/utils/motion";
 import { m } from "framer-motion";
 import useIsMobile from "@/hooks/useIsMobile";
-import useVideoUrl from "@/hooks/useVideoUrl";
 
 interface VideoComponentProps {
   fileName: string;
 }
 
 const VideoComponent: React.FC<VideoComponentProps> = ({ fileName }) => {
-  const { urls, loading, error } = useVideoUrl(fileName);
-
-  if (loading) return <VideoLoadingState />;
-  if (error) return <div>Error loading video: {error.message}</div>;
+  const videoUrl = `/videos/${fileName}`;
 
   return (
     <div className="flex-center size-full overflow-hidden">
@@ -38,7 +29,7 @@ const VideoComponent: React.FC<VideoComponentProps> = ({ fileName }) => {
         aria-label="Background Video Player"
         className="size-full"
       >
-        <source src={urls.url2} type="video/mp4" className="size-full" />
+        <source src={videoUrl} type="video/mp4" className="size-full" />
         Your browser does not support the video tag.
       </video>
     </div>
@@ -76,32 +67,22 @@ export default function CarouselShowcase() {
             </Suspense>
           </CarouselItem>
           <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            <Image
-              src={appPic1}
-              alt="app monthly report image"
-              className="h-[448px] w-[242px] object-cover"
-            />
+            {/* Primer Video Adicional */}
+            <Suspense fallback={<VideoLoadingState />}>
+              <VideoComponent fileName="ad1.mp4" />
+            </Suspense>
           </CarouselItem>
           <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            <Image
-              src={appPic2}
-              alt="app chat with trainer image"
-              className="h-[448px] w-[242px] object-cover"
-            />
+            {/* Segundo Video Adicional */}
+            <Suspense fallback={<VideoLoadingState />}>
+              <VideoComponent fileName="ad2.mp4" />
+            </Suspense>
           </CarouselItem>
           <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            <Image
-              src={appPic3}
-              alt="app progress tracking image"
-              className="h-[448px] w-[242px] object-cover"
-            />
-          </CarouselItem>
-          <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            <Image
-              src={appPic4}
-              alt="app workout plan image"
-              className="h-[448px] w-[242px] object-cover"
-            />
+            {/* Tercer Video Adicional */}
+            <Suspense fallback={<VideoLoadingState />}>
+              <VideoComponent fileName="ad3.mp4" />
+            </Suspense>
           </CarouselItem>
         </CarouselContent>
         <div className="flex-center relative mt-10 w-full gap-4">

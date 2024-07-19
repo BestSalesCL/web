@@ -3,7 +3,7 @@ import { list } from "@vercel/blob";
 
 export async function GET(request: NextRequest) {
   const fileName1 = "intro-kVXNsFug0OGb40llKnMk2QZEU9jc61";
-  const fileName2 = "app-video-7vO0ziNVbCwaOoUFRz99tUPHOA5YqO-Gd8gt6qtqteI7bTB8B5sqIqVws57oa.mp4"; 
+  const fileName2 = "ad1-cZaWyXFhv5WPBAJCL4cxH2kj5ejBrz.mp4"; 
 
   if (!fileName1 || !fileName2) {
     return NextResponse.json({ error: "Invalid file names" }, { status: 400 });
