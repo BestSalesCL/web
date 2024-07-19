@@ -54,7 +54,7 @@ export default function CarouselShowcase() {
         const response = await fetch('/api/get-video-urls');
         const data = await response.json();
         console.log("Fetched video URLs:", data.urls); // Debug log
-        setVideoUrls(data.urls);
+        setVideoUrls(data.urls.filter((url: string | null) => url !== null));
       } catch (error) {
         console.error("Error fetching video URLs:", error); // Debug log
       }

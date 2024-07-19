@@ -10,10 +10,6 @@ export async function GET(request: NextRequest) {
     "video5.mp4"   // Cambia esto por el nombre real del archivo
   ];
 
-  if (fileNames.some(fileName => !fileName)) {
-    return NextResponse.json({ error: "Invalid file names" }, { status: 400 });
-  }
-
   try {
     const blobs = await Promise.all(
       fileNames.map(fileName =>
