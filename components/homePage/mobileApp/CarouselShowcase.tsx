@@ -50,9 +50,14 @@ export default function CarouselShowcase() {
 
   useEffect(() => {
     const fetchVideoUrls = async () => {
-      const response = await fetch('/api/get-video-urls');
-      const data = await response.json();
-      setVideoUrls(data.urls);
+      try {
+        const response = await fetch('/api/get-video-urls');
+        const data = await response.json();
+        console.log("Fetched video URLs:", data.urls); // Debug log
+        setVideoUrls(data.urls);
+      } catch (error) {
+        console.error("Error fetching video URLs:", error); // Debug log
+      }
     };
 
     fetchVideoUrls();
@@ -71,13 +76,17 @@ export default function CarouselShowcase() {
         className="h-fit w-full sm:max-w-[300px] sm:pl-0 md:max-w-[360px] md:pl-10 lg:max-w-[600px]"
       >
         <CarouselContent className="flex-start">
-          {videoUrls.map((url, index) => (
-            <CarouselItem key={index} className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-              <Suspense fallback={<VideoLoadingState />}>
-                <VideoComponent url={url} />
-              </Suspense>
-            </CarouselItem>
-          ))}
+          {videoUrls.length === 0 ? (
+            <VideoLoadingState />
+          ) : (
+            videoUrls.map((url, index) => (
+              <CarouselItem key={index} className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
+                <Suspense fallback={<VideoLoadingState />}>
+                  <VideoComponent url={url} />
+                </Suspense>
+              </CarouselItem>
+            ))
+          )}
         </CarouselContent>
         <div className="flex-center relative mt-10 w-full gap-4">
           <CarouselPrevious className="flex-center static z-[5] size-[40px]" />
