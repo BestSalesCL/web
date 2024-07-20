@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 interface VideoUrlsResponse {
-  urls: string[];  // Cambiamos para manejar una lista de URLs
+  urls: string[];
 }
 
-const useVideoUrls = () => {
+const useVideoUrl = () => {
   const [urls, setUrls] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
@@ -31,4 +31,4 @@ const useVideoUrls = () => {
   return { urls, loading, error };
 };
 
-export default useVideoUrls;
+export default useVideoUrl;

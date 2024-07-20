@@ -10,7 +10,7 @@ import {
 import { fadeIn, show } from "@/utils/motion";
 import { m } from "framer-motion";
 import useIsMobile from "@/hooks/useIsMobile";
-import useVideoUrls from "@/hooks/useVideoUrls";  // Importa el hook actualizado
+import useVideoUrl from "@/hooks/useVideoUrl";  // Importa el hook correctamente
 
 interface VideoComponentProps {
   url: string;
@@ -44,7 +44,7 @@ const VideoLoadingState: React.FC = () => {
 };
 
 export default function CarouselShowcase() {
-  const { urls, loading, error } = useVideoUrls();
+  const { urls, loading, error } = useVideoUrl();
   const isMobile = useIsMobile();
 
   if (loading) {
