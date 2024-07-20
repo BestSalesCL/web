@@ -10,7 +10,7 @@ const App = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section id="app" className="flex-center-col w-full overflow-visible bg-primary_500 px-6 py-[48px] sm:px-[40px] md:px-[100px] md:py-[96px]">
+    <section id="app" className="flex-center-col w-full min-h-screen bg-primary_500 px-6 py-[48px] sm:px-[40px] md:px-[100px] md:py-[96px]">
       <div className="flex-start-col h-fit w-full max-w-[1240px] gap-[40px] ">
         <m.h2
           variants={isMobile ? show() : textVariant(0)}
