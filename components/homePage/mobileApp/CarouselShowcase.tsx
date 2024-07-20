@@ -1,5 +1,5 @@
 "use client";
-import React, { Suspense } from "react";
+import React, { useState, useRef, Suspense } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -17,11 +17,22 @@ interface VideoComponentProps {
 }
 
 const VideoComponent: React.FC<VideoComponentProps> = ({ url }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setMuted(videoRef.current.muted);
+    }
+  };
+
   return (
-    <div className="flex-center size-full overflow-hidden">
+    <div className="relative flex-center size-full overflow-hidden">
       <video
+        ref={videoRef}
         autoPlay
-        muted
+        muted={muted}
         playsInline
         loop
         preload="none"
@@ -31,6 +42,12 @@ const VideoComponent: React.FC<VideoComponentProps> = ({ url }) => {
         <source src={url} type="video/mp4" className="size-full" />
         Your browser does not support the video tag.
       </video>
+      <button
+        onClick={toggleMute}
+        className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded"
+      >
+        {muted ? "Unmute" : "Mute"}
+      </button>
     </div>
   );
 };
