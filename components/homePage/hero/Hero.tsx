@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
           <h1 className="h1-small md:h1-big text-left text-text_color sm:text-center">
           El Dinero Es Oxigeno
           </h1>
-          <p className="subtitle text-text_400">Mejora ahora</p>
+          <p className="subtitle text-text_400">No te quedes sin aire</p>
         </m.div>
 
         <m.div
