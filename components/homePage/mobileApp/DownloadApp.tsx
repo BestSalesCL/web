@@ -1,6 +1,6 @@
+"use client";
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import logo from "@/public/assets/images/App-logo.png";
 import stars from "@/public/assets/images/stars-rating.png";
 import { Button } from "@/components/ui/button";
@@ -32,6 +32,8 @@ const DownloadApp = () => {
           La mejor manera de aumentar tus ventas
         </p>
       </div>
+      {/* Comentando los botones de descarga */}
+      {/*
       <div className="flex-center-col size-fit gap-3">
         <Button
           asChild
@@ -105,6 +107,7 @@ const DownloadApp = () => {
           </Link>
         </Button>
       </div>
+      */}
     </m.div>
   );
 };
