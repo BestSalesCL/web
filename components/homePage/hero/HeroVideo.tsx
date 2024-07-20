@@ -1,16 +1,16 @@
-import React from "react";
-import useVideoUrl from "@/hooks/useVideoUrl";  // Importa el hook correctamente
+import React, { Suspense } from "react";
+import useVideoUrl from "@/hooks/useVideoUrl";
 
-const HeroVideo: React.FC = () => {
+const VideoComponent: React.FC = () => {
   const { urls, loading, error } = useVideoUrl();
 
-  if (loading) return <div>Loading video...</div>;
+  if (loading) return <VideoLoadingState />;
   if (error) return <div>Error loading video: {error.message}</div>;
 
   const videoUrl = urls[0];  // Usa la primera URL
 
   return (
-    <div className="hero-video-container">
+    <div className="flex-center size-full min-h-full overflow-hidden">
       <video
         autoPlay
         muted
@@ -18,13 +18,29 @@ const HeroVideo: React.FC = () => {
         loop
         preload="none"
         aria-label="Background Video Player"
-        className="hero-video"
+        className="size-full min-h-full object-cover"
       >
-        <source src={videoUrl} type="video/mp4" />
+        <source src={videoUrl} type="video/mp4" className="size-full object-cover" />
         Your browser does not support the video tag.
       </video>
     </div>
   );
 };
 
-export default HeroVideo;
+const VideoLoadingState: React.FC = () => {
+  return (
+    <div className="flex-center size-full min-h-full animate-pulse bg-background_color">
+      <p>Loading video...</p>
+    </div>
+  );
+};
+
+export default function HeroVideo() {
+  return (
+    <div className="size-full min-h-full">
+      <Suspense fallback={<VideoLoadingState />}>
+        <VideoComponent />
+      </Suspense>
+    </div>
+  );
+}
