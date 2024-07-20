@@ -24,10 +24,7 @@ const Footer = () => {
         <div className="flex-start-col h-auto w-full max-w-[1240px] gap-12 py-12 sm:py-[56px]">
           {/* Redes Sociales y Contacto */}
           <div className="flex-begin-col h-fit w-full gap-8 sm:flex sm:items-center sm:justify-end md:flex-row md:justify-start">
-            <div className="flex-start-col w-full gap-4">
-              <Link href="mailto:contact@thebestsales.co" className="text-16 text-white hover:underline">
-                contact@thebestsales.co
-              </Link>
+            <div className="flex-start-col w-full gap-4 sm:flex-row sm:items-center">
               <Link
                 href="https://www.instagram.com/bestlevel_/"
                 target="_blank"
@@ -39,6 +36,9 @@ const Footer = () => {
                   alt="instagram logo"
                   className="size-8"
                 />
+              </Link>
+              <Link href="mailto:contact@thebestsales.co" className="text-16 text-white hover:underline ml-4">
+                contact@thebestsales.co
               </Link>
             </div>
             <div className="flex-begin-col w-full items-center justify-end gap-4 sm:flex sm:flex-row sm:items-center sm:justify-start">
