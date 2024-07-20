@@ -61,27 +61,23 @@ export default function CarouselShowcase() {
       >
         <CarouselContent className="flex-start">
           <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            {/* Mobile Phone Video */}
             <Suspense fallback={<VideoLoadingState />}>
               <VideoComponent fileName="app-video-7vO0ziNVbCwaOoUFRz99tUPHOA5YqO.mp4" />
             </Suspense>
           </CarouselItem>
           <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            {/* Primer Video Adicional */}
             <Suspense fallback={<VideoLoadingState />}>
-              <VideoComponent fileName="ad1.mp4" />
+              <VideoComponent fileName="additional-video-1.mp4" />
             </Suspense>
           </CarouselItem>
           <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            {/* Segundo Video Adicional */}
             <Suspense fallback={<VideoLoadingState />}>
-              <VideoComponent fileName="ad2.mp4" />
+              <VideoComponent fileName="additional-video-2.mp4" />
             </Suspense>
           </CarouselItem>
           <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            {/* Tercer Video Adicional */}
             <Suspense fallback={<VideoLoadingState />}>
-              <VideoComponent fileName="ad3.mp4" />
+              <VideoComponent fileName="additional-video-3.mp4" />
             </Suspense>
           </CarouselItem>
         </CarouselContent>
