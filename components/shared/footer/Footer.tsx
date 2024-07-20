@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import logo from "@/public/assets/icons/tbl-logo.png";
+// import logo from "@/public/assets/icons/tbl-logo.png";
 import instagram from "@/public/assets/icons/instagram.svg";
 import facebook from "@/public/assets/icons/facebook.svg";
 import youtube from "@/public/assets/icons/youtube.svg";
@@ -18,7 +18,7 @@ import { usePathname } from "next/navigation";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const Footer = () => {
-  const router = usePathname();
+  // const router = usePathname();
   // const isNotWebinarPage = !router.includes("/webinar");
   const isMobile = useIsMobile();
 
