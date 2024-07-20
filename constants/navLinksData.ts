@@ -5,8 +5,8 @@ type Links = {
 
 export const NavLinksData: Links[] = [
   {
-    name: "About Us",
-    link: "/about",
+    name: "Servicios",
+    link: "#services",
   },
   // {
   //   name: "Blog",
