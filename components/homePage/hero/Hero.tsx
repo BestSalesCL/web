@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
         >
           <TransparentButton
             title="Consigue Más Clientes"
-            link="/sports-survey"
+            link="/contact"
           />
         </m.div>
       </div>
