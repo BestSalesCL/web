@@ -10,14 +10,13 @@ import {
 import { fadeIn, show } from "@/utils/motion";
 import { m } from "framer-motion";
 import useIsMobile from "@/hooks/useIsMobile";
+import useVideoUrls from "@/hooks/useVideoUrls";  // Importa el hook actualizado
 
 interface VideoComponentProps {
-  fileName: string;
+  url: string;
 }
 
-const VideoComponent: React.FC<VideoComponentProps> = ({ fileName }) => {
-  const videoUrl = `/videos/${fileName}`;
-
+const VideoComponent: React.FC<VideoComponentProps> = ({ url }) => {
   return (
     <div className="flex-center size-full overflow-hidden">
       <video
@@ -29,7 +28,7 @@ const VideoComponent: React.FC<VideoComponentProps> = ({ fileName }) => {
         aria-label="Background Video Player"
         className="size-full"
       >
-        <source src={videoUrl} type="video/mp4" className="size-full" />
+        <source src={url} type="video/mp4" className="size-full" />
         Your browser does not support the video tag.
       </video>
     </div>
@@ -45,7 +44,16 @@ const VideoLoadingState: React.FC = () => {
 };
 
 export default function CarouselShowcase() {
+  const { urls, loading, error } = useVideoUrls();
   const isMobile = useIsMobile();
+
+  if (loading) {
+    return <VideoLoadingState />;
+  }
+
+  if (error) {
+    return <div>Error loading videos: {error.message}</div>;
+  }
 
   return (
     <m.div
@@ -60,26 +68,13 @@ export default function CarouselShowcase() {
         className="h-fit w-full sm:max-w-[300px] sm:pl-0 md:max-w-[360px] md:pl-10 lg:max-w-[600px]"
       >
         <CarouselContent className="flex-start">
-          <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            <Suspense fallback={<VideoLoadingState />}>
-              <VideoComponent fileName="app-video-7vO0ziNVbCwaOoUFRz99tUPHOA5YqO.mp4" />
-            </Suspense>
-          </CarouselItem>
-          <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            <Suspense fallback={<VideoLoadingState />}>
-              <VideoComponent fileName="additional-video-1.mp4" />
-            </Suspense>
-          </CarouselItem>
-          <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            <Suspense fallback={<VideoLoadingState />}>
-              <VideoComponent fileName="additional-video-2.mp4" />
-            </Suspense>
-          </CarouselItem>
-          <CarouselItem className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
-            <Suspense fallback={<VideoLoadingState />}>
-              <VideoComponent fileName="additional-video-3.mp4" />
-            </Suspense>
-          </CarouselItem>
+          {urls.map((url, index) => (
+            <CarouselItem key={index} className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
+              <Suspense fallback={<VideoLoadingState />}>
+                <VideoComponent url={url} />
+              </Suspense>
+            </CarouselItem>
+          ))}
         </CarouselContent>
         <div className="flex-center relative mt-10 w-full gap-4">
           <CarouselPrevious className="flex-center static z-[5] size-[40px]" />

@@ -1,27 +1,23 @@
 import { useState, useEffect } from "react";
 
 interface VideoUrlsResponse {
-  url1: string | null;
-  url2: string | null;
+  urls: string[];  // Cambiamos para manejar una lista de URLs
 }
 
-const useVideoUrl = (fileName: string) => {
-  const [urls, setUrls] = useState<{ url1: string; url2: string }>({
-    url1: "",
-    url2: "",
-  });
+const useVideoUrls = () => {
+  const [urls, setUrls] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const fetchVideoUrl = async () => {
+    const fetchVideoUrls = async () => {
       try {
         const response = await fetch(`/api/proxy-fetch`);
         if (!response.ok) {
-          throw new Error("Failed to fetch video URL");
+          throw new Error("Failed to fetch video URLs");
         }
         const data: VideoUrlsResponse = await response.json();
-        setUrls({ url1: data.url1 || "", url2: data.url2 || "" });
+        setUrls(data.urls || []);
       } catch (err) {
         setError(err as Error);
       } finally {
@@ -29,10 +25,10 @@ const useVideoUrl = (fileName: string) => {
       }
     };
 
-    fetchVideoUrl();
-  }, [fileName]);
+    fetchVideoUrls();
+  }, []);
 
   return { urls, loading, error };
 };
 
-export default useVideoUrl;
+export default useVideoUrls;
