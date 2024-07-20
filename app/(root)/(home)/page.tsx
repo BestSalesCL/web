@@ -20,7 +20,9 @@ export default function Home() {
         <div id="services">
           <Services />
         </div>
-        <App />
+        <div id="app">
+          <App />
+        </div>
         <Reviews />
         {/* <Blog /> */}
         <Faqs />

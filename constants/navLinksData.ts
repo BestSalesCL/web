@@ -9,7 +9,7 @@ export const NavLinksData: Links[] = [
     link: "#services",  // Asegúrate de que esto coincide con el id en el componente
   },
   {
-    name: "Workouts",
-    link: "/workouts",
+    name: "Contenido",
+    link: "#app",  // Asegúrate de que esto coincide con el id en el componente
   },
 ];
