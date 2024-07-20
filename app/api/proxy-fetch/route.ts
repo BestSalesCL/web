@@ -6,8 +6,8 @@ export async function GET(request: NextRequest) {
     "intro-kVXNsFug0OGb40llKnMk2QZEU9jc61.mp4",
     "ad2-9FXlvHd8sIFoIko3FcXtXYFzVtmBFP.mp4",
     "ad3-ohHIb4DSImxt4iRVCdLaoKuETKXZSD.mp4",
-    "ad1-cZaWyXFhv5WPBAJCL4cxH2kj5ejBrz.mp4",
-    "ad4-XQ7YcFvayB3tqRQI9fipDOZhlOtibM.mp4"  // Añadimos un cuarto video
+    "ad4-XQ7YcFvayB3tqRQI9fipDOZhlOtibM.mp4",
+    "ad1-cZaWyXFhv5WPBAJCL4cxH2kj5ejBrz.mp4"  // Añadimos un cuarto video
   ];
 
   try {
