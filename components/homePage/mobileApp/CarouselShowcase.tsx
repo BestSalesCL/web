@@ -55,8 +55,8 @@ export default function CarouselShowcase() {
     return <div>Error loading videos: {error.message}</div>;
   }
 
-  // Usa los tres videos restantes
-  const carouselUrls = urls.slice(1, 4);
+  // Usa los cuatro videos restantes
+  const carouselUrls = urls.slice(1, 5);
 
   return (
     <m.div
