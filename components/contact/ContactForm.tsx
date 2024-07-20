@@ -89,8 +89,6 @@ const ContactForm = () => {
     }
   };
 
-  // Handle Free form show
-
   const isMobile = useIsMobile();
 
   return (
