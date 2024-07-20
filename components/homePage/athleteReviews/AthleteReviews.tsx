@@ -102,14 +102,14 @@ const AthleteReviews = () => {
           <Image
             src={logofb}
             alt="Facebook Partner Logo"
-            className="h-[60px] w-auto"
+            className="h-[60px] w-auto cursor-pointer"
           />
         </m.div>
         <m.div whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 300 }}>
           <Image
             src={logogoogle}
             alt="Google Partner Logo"
-            className="h-[60px] w-auto"
+            className="h-[60px] w-auto cursor-pointer"
           />
         </m.div>
       </div>
