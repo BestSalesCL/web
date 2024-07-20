@@ -5,6 +5,8 @@ import Image from "next/image";
 import boxBgDesktop from "@/public/assets/images/boxing-desktop.avif";
 import boxBgXxl from "@/public/assets/images/boxing-xxl.jpeg";
 import lights from "@/public/assets/images/lights-bg-desktop.avif";
+import logofb from "@/public/assets/images/logofb.png";
+import logogoogle from "@/public/assets/images/logogoogle.png";
 import { m, useScroll, useTransform } from "framer-motion";
 import { TransparentButton } from "@/components/TransparentButton";
 import { fadeIn, textContainer, textVariant, show } from "@/utils/motion";
@@ -93,6 +95,20 @@ const AthleteReviews = () => {
           />
         </div>
       </m.div>
+
+      {/* Logos for partners */}
+      <div className="flex-center gap-8 mt-8">
+        <Image
+          src={logofb}
+          alt="Facebook Partner Logo"
+          className="h-[60px] w-auto"
+        />
+        <Image
+          src={logogoogle}
+          alt="Google Partner Logo"
+          className="h-[60px] w-auto"
+        />
+      </div>
     </section>
   );
 };
