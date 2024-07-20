@@ -14,7 +14,7 @@ import Link from "next/link";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 
 import { fadeIn, show } from "@/utils/motion";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation"; // Comentada esta línea
 import useIsMobile from "@/hooks/useIsMobile";
 
 const Footer = () => {
