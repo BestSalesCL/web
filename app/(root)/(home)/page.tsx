@@ -20,7 +20,7 @@ export default function Home() {
         <div id="services">
           <Services />
         </div>
-        <div id="app">
+        <div id="app" className="w-full">
           <App />
         </div>
         <Reviews />
