@@ -9,8 +9,8 @@ import tiktok from "@/public/assets/icons/tiktok.svg";
 import messenger from "@/public/assets/icons/messenger.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { NavLinksData } from "@/constants/navLinksData";
-import { Button } from "@/components/ui/button";
+// import { NavLinksData } from "@/constants/navLinksData";
+// import { Button } from "@/components/ui/button";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 
 import { fadeIn, show } from "@/utils/motion";
@@ -19,7 +19,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 
 const Footer = () => {
   const router = usePathname();
-  const isNotWebinarPage = !router.includes("/webinar");
+  // const isNotWebinarPage = !router.includes("/webinar");
   const isMobile = useIsMobile();
 
   return (
@@ -32,7 +32,7 @@ const Footer = () => {
         className="flex-center h-fit w-full border-t-2 border-solid border-t-secondary_200 bg-background_color px-6 md:px-[40px] lg:px-[100px]"
       >
         <div className="flex-start-col h-auto w-full max-w-[1240px] gap-12 py-12 sm:py-[56px]">
-          <div className="flex-start-col size-full gap-12 sm:gap-[28px] md:flex-row md:items-start md:justify-center md:gap-[52px] lg:justify-between">
+          {/* <div className="flex-start-col size-full gap-12 sm:gap-[28px] md:flex-row md:items-start md:justify-center md:gap-[52px] lg:justify-between">
             <div className="flex-center-col h-fit w-full gap-4 sm:w-fit">
               <Link href="/" className="size-fit">
                 <Image
@@ -58,7 +58,6 @@ const Footer = () => {
               )}
             </div>
 
-            {/* Company */}
             <div className="flex-start-col size-fit gap-12 sm:gap-[56px] ">
               <h6 className="subtitle whitespace-nowrap text-center text-text_color">
                 Company
@@ -80,15 +79,12 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Contact */}
             <div className="flex-start-col h-fit w-full gap-12 sm:w-fit sm:gap-[56px]">
-              {/* Title */}
               <h6 className="subtitle whitespace-nowrap text-center text-text_color">
                 Contact
               </h6>
 
               <div className="flex-start-col h-fit w-full gap-8">
-                {/* Email info */}
                 <div className="flex-start-col gap-2">
                   <p className="text-20-bold whitespace-nowrap text-center text-text_color">
                     Email
@@ -99,7 +95,6 @@ const Footer = () => {
                     </p>
                   </Link>
                 </div>
-                {/* Buttons to download the app */}
                 <div className="flex-start-col size-full gap-4">
                   <p className="text-20-bold whitespace-nowrap text-center text-text_color">
                     Download our Free App
@@ -178,9 +173,9 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          {/* Links */}
+          {/* Redes Sociales */}
           <div className="flex-begin-col h-fit w-full gap-8 sm:flex sm:items-center sm:justify-end md:flex-row md:justify-start">
             <div className="flex-start w-full gap-4">
               <Link
