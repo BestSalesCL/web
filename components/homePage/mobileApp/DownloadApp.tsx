@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import logo from "@/public/assets/images/App-logo.png";
-import stars from "@/public/assets/images/stars-rating.png";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button"; // Comentado porque no se usa
 import { fadeIn, show } from "@/utils/motion";
 import { m } from "framer-motion";
 import useIsMobile from "@/hooks/useIsMobile";
+// import Link from "next/link"; // Comentado porque no se usa
+import logo from "@/public/assets/images/App-logo.png";
+import stars from "@/public/assets/images/stars-rating.png";
 
 const DownloadApp = () => {
   const isMobile = useIsMobile();
