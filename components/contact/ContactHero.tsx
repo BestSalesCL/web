@@ -16,7 +16,7 @@ const ContactHero = () => {
         viewport={{ once: true }}
         className="h1-small md:h1-big text-center text-text_color"
       >
-        Get in Touch
+        Contacta con nosotros
       </m.h1>
       <m.p
         variants={isMobile ? show() : fadeIn("down", "tween", 0, 0.6)}
@@ -25,7 +25,7 @@ const ContactHero = () => {
         viewport={{ once: true }}
         className="text-20-semibold text-center text-text_400"
       >
-        Fill out the form and we we&#x27;ll get back to you as soon as we can.
+        Rellena el formulario y nos contactaremos lo antes posible.
       </m.p>
     </section>
   );

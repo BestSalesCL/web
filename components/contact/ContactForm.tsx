@@ -109,7 +109,7 @@ const ContactForm = () => {
                 name="firstName"
                 render={({ field }) => (
                   <FormItem className="w-full">
-                    <FormLabel className="text-text_color">Name</FormLabel>
+                    <FormLabel className="text-text_color">Nombre</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -126,7 +126,7 @@ const ContactForm = () => {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem className="w-full">
-                    <FormLabel className="text-text_color">Last Name</FormLabel>
+                    <FormLabel className="text-text_color">Apellido</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -144,7 +144,7 @@ const ContactForm = () => {
                 render={({ field }) => (
                   <FormItem className="w-full">
                     <FormLabel className="text-text_color">
-                      Email Address
+                      Email
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -163,7 +163,7 @@ const ContactForm = () => {
                 render={({ field }) => (
                   <FormItem className="w-full">
                     <FormLabel className="text-text_color">
-                      Phone Number
+                      Numero de contacto
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -184,7 +184,7 @@ const ContactForm = () => {
             >
               {!loading && (
                 <p className="transition-all duration-500 ease-out group-hover:text-background_color">
-                  Send
+                  Enviar
                 </p>
               )}
               {loading && (
@@ -212,8 +212,7 @@ const ContactForm = () => {
             {sent && (
               <div className="flex-start w-full">
                 <p className="text-20-semibold text-text_color">
-                  Your message has been sent successfully! We we&#x27;ll contact
-                  you soon.
+                  Su formulario ha sido enviado exitosamente! Nos contactaremos lo antes posible
                 </p>
               </div>
             )}
