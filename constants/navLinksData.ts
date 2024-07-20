@@ -6,12 +6,8 @@ type Links = {
 export const NavLinksData: Links[] = [
   {
     name: "Servicios",
-    link: "#Services",
+    link: "#services",  // Asegúrate de que esto coincide con el id en el componente
   },
-  // {
-  //   name: "Blog",
-  //   link: "/blog",
-  // },
   {
     name: "Workouts",
     link: "/workouts",

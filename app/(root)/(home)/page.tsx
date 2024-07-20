@@ -10,7 +10,6 @@ import { Reviews } from "@/components/homePage/videoReviews/Reviews";
 import { Faqs } from "@/components/homePage/faqs/Faqs";
 import { LazyMotion, domAnimation } from "framer-motion";
 
-// a h
 export default function Home() {
   return (
     <section className="flex-center-col size-full overflow-hidden">
@@ -18,7 +17,9 @@ export default function Home() {
         <Hero />
         <Stats />
         <AthleteReviews />
-        <Services />
+        <div id="services">
+          <Services />
+        </div>
         <App />
         <Reviews />
         {/* <Blog /> */}

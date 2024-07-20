@@ -9,7 +9,7 @@ const Services = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="flex-center-col w-full gap-[32px] bg-background_color px-6 py-[48px] sm:gap-[64px] sm:px-[40px] md:px-[100px] md:py-[96px]">
+    <section id="services" className="flex-center-col w-full gap-[32px] bg-background_color px-6 py-[48px] sm:gap-[64px] sm:px-[40px] md:px-[100px] md:py-[96px]">
       {/* Title of the section */}
       <m.h2
         variants={isMobile ? show() : textVariant(0)}
