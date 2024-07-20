@@ -59,6 +59,7 @@ const ContactForm = () => {
           name: values.firstName,
           lastName: values.lastName,
           email: values.emailAddress,
+          phoneNumber: values.phoneNumber,
           aboutYou: values.aboutYou,
         };
       } else {
@@ -66,6 +67,7 @@ const ContactForm = () => {
           name: values.firstName,
           lastName: values.lastName,
           email: values.emailAddress,
+          phoneNumber: values.phoneNumber,
           aboutYou: values.aboutYou,
         };
       }
