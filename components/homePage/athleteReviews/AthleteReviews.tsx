@@ -67,10 +67,7 @@ const AthleteReviews = () => {
             ¿Que esperas para unirte?
           </p>
           <div className="size-fit">
-            <TransparentButton
-              title="Contáctanos"
-              link="/contact"
-            />
+            <TransparentButton title="Contáctanos" link="/contact" />
           </div>
         </m.div>
       </div>
@@ -99,8 +96,8 @@ const AthleteReviews = () => {
       {/* Logos for partners */}
       <div className="flex-center gap-8 mt-8">
         <m.div
-          whileHover={{ scale: 1.2 }}
-          transition={{ duration: 0.3 }}
+          whileHover={{ rotate: 360 }}
+          transition={{ duration: 0.5 }}
           className="cursor-pointer"
         >
           <Image
@@ -110,8 +107,8 @@ const AthleteReviews = () => {
           />
         </m.div>
         <m.div
-          whileHover={{ scale: 1.2 }}
-          transition={{ duration: 0.3 }}
+          whileHover={{ rotate: 360 }}
+          transition={{ duration: 0.5 }}
           className="cursor-pointer"
         >
           <Image
