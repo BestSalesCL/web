@@ -54,7 +54,7 @@ const ServiceCards = () => {
                 className="flex-center size-full border-[3px] border-solid border-primary_color bg-transparent px-6 py-3 shadow-base hover:border-primary_200 hover:bg-primary_color"
               >
                 <Link
-                  href="/workouts"
+                  href="/contact"
                   className="flex-center size-full text-text_color hover:text-background_color"
                 >
                   <p className="text-20-bold">Contáctanos</p>

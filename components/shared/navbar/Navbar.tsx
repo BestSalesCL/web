@@ -101,10 +101,10 @@ const Navbar = () => {
               className="md:flex-center hidden h-11 w-fit border-2 border-solid border-primary_color bg-background_color px-6 py-3 hover:border-primary_200 hover:bg-primary_color"
             >
               <Link
-                href="/sports-survey"
+                href="/contact"
                 className="md:flex-center hidden size-full text-text_color hover:text-background_color"
               >
-                <p className="text-20-bold">Select Your Sport</p>
+                <p className="text-20-bold">Contáctanos</p>
               </Link>
             </Button>
           )}

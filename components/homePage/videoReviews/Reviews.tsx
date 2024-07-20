@@ -18,7 +18,7 @@ const Reviews = () => {
       >
         {/* Title */}
         <h2 className="h2-small md:h1-small text-left text-background_color">
-          Our Happy Clients
+          Nuestros clientes contentos
         </h2>
         <VideoCarousel />
       </m.div>

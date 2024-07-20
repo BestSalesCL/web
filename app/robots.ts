@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/privacy", "/terms-and-conditions"],
     },
-    sitemap: "https://thebestlevel.com/sitemap.xml",
+    sitemap: "https://thebestsales.co/sitemap.xml",
   };
 }
