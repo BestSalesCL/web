@@ -55,6 +55,9 @@ export default function CarouselShowcase() {
     return <div>Error loading videos: {error.message}</div>;
   }
 
+  // Usa los tres videos restantes
+  const carouselUrls = urls.slice(1, 4);
+
   return (
     <m.div
       variants={isMobile ? show() : fadeIn("left", "tween", 0, 0.5)}
@@ -68,7 +71,7 @@ export default function CarouselShowcase() {
         className="h-fit w-full sm:max-w-[300px] sm:pl-0 md:max-w-[360px] md:pl-10 lg:max-w-[600px]"
       >
         <CarouselContent className="flex-start">
-          {urls.map((url, index) => (
+          {carouselUrls.map((url, index) => (
             <CarouselItem key={index} className="flex-center-col relative h-[448px] w-[242px] md:basis-3/4 lg:basis-3/5">
               <Suspense fallback={<VideoLoadingState />}>
                 <VideoComponent url={url} />
