@@ -10,7 +10,7 @@ const HeroVideo: React.FC = () => {
   const videoUrl = urls[0];  // Usa la primera URL
 
   return (
-    <div className="flex-center size-full overflow-hidden">
+    <div className="hero-video-container">
       <video
         autoPlay
         muted
@@ -18,9 +18,9 @@ const HeroVideo: React.FC = () => {
         loop
         preload="none"
         aria-label="Background Video Player"
-        className="size-full"
+        className="hero-video"
       >
-        <source src={videoUrl} type="video/mp4" className="size-full" />
+        <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
