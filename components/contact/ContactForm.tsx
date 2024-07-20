@@ -14,7 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Input, Textarea } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import useIsMobile from "@/hooks/useIsMobile";
 
@@ -23,6 +23,7 @@ const pricingFormSchema = z.object({
   lastName: z.string().min(1, "Please enter your name"),
   emailAddress: z.string().email(),
   phoneNumber: z.string().min(8, "Please enter a valid phone number"),
+  aboutYou: z.string().min(1, "Please tell us a bit about yourself"),
 });
 
 const ContactForm = () => {
@@ -39,6 +40,7 @@ const ContactForm = () => {
       lastName: "",
       emailAddress: "",
       phoneNumber: "",
+      aboutYou: "",
     },
   });
 
@@ -57,12 +59,14 @@ const ContactForm = () => {
           name: values.firstName,
           lastName: values.lastName,
           email: values.emailAddress,
+          aboutYou: values.aboutYou,
         };
       } else {
         combinedData = {
           name: values.firstName,
           lastName: values.lastName,
           email: values.emailAddress,
+          aboutYou: values.aboutYou,
         };
       }
 
@@ -143,9 +147,7 @@ const ContactForm = () => {
                 name="emailAddress"
                 render={({ field }) => (
                   <FormItem className="w-full">
-                    <FormLabel className="text-text_color">
-                      Email
-                    </FormLabel>
+                    <FormLabel className="text-text_color">Email</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -162,14 +164,29 @@ const ContactForm = () => {
                 name="phoneNumber"
                 render={({ field }) => (
                   <FormItem className="w-full">
-                    <FormLabel className="text-text_color">
-                      Numero de contacto
-                    </FormLabel>
+                    <FormLabel className="text-text_color">Número de contacto</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         placeholder="Please enter your phone number"
                         type="tel"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="aboutYou"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormLabel className="text-text_color">Cuéntanos un poco de ti</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        {...field}
+                        placeholder="Escribe aquí sobre ti"
+                        className="h-[150px]"
                       />
                     </FormControl>
                     <FormMessage />

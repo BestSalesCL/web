@@ -9,7 +9,7 @@ export const NavLinksData: Links[] = [
     link: "#services",
   },
   {
-    name: "Ads",
+    name: "ADS",
     link: "#app",
   },
 ];
