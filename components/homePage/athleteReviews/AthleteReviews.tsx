@@ -98,16 +98,20 @@ const AthleteReviews = () => {
 
       {/* Logos for partners */}
       <div className="flex-center gap-8 mt-8">
-        <Image
-          src={logofb}
-          alt="Facebook Partner Logo"
-          className="h-[60px] w-auto"
-        />
-        <Image
-          src={logogoogle}
-          alt="Google Partner Logo"
-          className="h-[60px] w-auto"
-        />
+        <m.div whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 300 }}>
+          <Image
+            src={logofb}
+            alt="Facebook Partner Logo"
+            className="h-[60px] w-auto"
+          />
+        </m.div>
+        <m.div whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 300 }}>
+          <Image
+            src={logogoogle}
+            alt="Google Partner Logo"
+            className="h-[60px] w-auto"
+          />
+        </m.div>
       </div>
     </section>
   );
