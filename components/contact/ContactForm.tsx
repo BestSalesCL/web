@@ -115,7 +115,7 @@ const ContactForm = () => {
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="Please enter your name"
+                        placeholder="Ingresa tu nombre"
                         type="text"
                       />
                     </FormControl>
@@ -132,7 +132,7 @@ const ContactForm = () => {
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="Please enter your last name"
+                        placeholder="Ingresa tu Apellido"
                         type="text"
                       />
                     </FormControl>
@@ -149,7 +149,7 @@ const ContactForm = () => {
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="Please enter your email"
+                        placeholder="Ingresa tu email de contacto"
                         type="email"
                       />
                     </FormControl>
@@ -166,7 +166,7 @@ const ContactForm = () => {
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="Please enter your phone number"
+                        placeholder="Ingresa tu número telefónico"
                         type="tel"
                       />
                     </FormControl>
@@ -183,7 +183,7 @@ const ContactForm = () => {
                     <FormControl>
                       <Textarea
                         {...field}
-                        placeholder="Escribe aquí sobre ti"
+                        placeholder="Escribe sobre tu negocio"
                         className="h-[150px]"
                       />
                     </FormControl>
