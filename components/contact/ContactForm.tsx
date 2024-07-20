@@ -14,8 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/Textarea";  // Importa el nuevo componente Textarea
+import { Input, Textarea } from "@/components/ui/input";  // Importa ambos componentes
 import { useRouter } from "next/navigation";
 import useIsMobile from "@/hooks/useIsMobile";
 
