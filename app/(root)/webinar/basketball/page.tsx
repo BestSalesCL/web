@@ -1,6 +1,16 @@
 "use client";
 import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { Hero } from "@/components/webinar/hero/Hero";
+import { Reviews } from "@/components/webinar/videoReviews/Reviews";
+import { Faqs } from "@/components/webinar/faqs/Faqs";
+import { InfoSection } from "@/components/webinar/info/InfoSection";
+import { Pricing } from "@/components/webinar/pricing/Pricing";
+import DelayComponent from "@/components/shared/delay/DelayComponent";
+import desktop from "@/public/assets/images/webinar/basketball/1.avif";
+import phone from "@/public/assets/images/webinar/basketball/2.avif";
+import player from "@/public/assets/images/webinar/basketball/3.avif";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 const WebinarPage = () => {
   const pathname = usePathname();
@@ -61,7 +71,7 @@ const WebinarPage = () => {
         <Hero
           title="The PERFECT method to improve your Basketball performance"
           alt="Basketball Video Webinar"
-          video="https://player.vimeo.com/video/984496825?h=fa6147f2c6"  // Change the video ID to the id of the webinar videohttps://youtu.be/xKiBUWaOBXw
+          video="https://player.vimeo.com/video/984496825?h=fa6147f2c6" // Change the video ID to the id of the webinar videohttps://youtu.be/xKiBUWaOBXw
         />
         <DelayComponent delay={60000}>
           <InfoSection
@@ -185,4 +195,6 @@ const WebinarPage = () => {
       </LazyMotion>
     </section>
   );
-}
+};
+
+export default WebinarPage;

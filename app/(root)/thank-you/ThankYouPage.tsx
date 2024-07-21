@@ -1,8 +1,8 @@
 "use client";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
-const ThankYouPageWrapper = () => {
+const ThankYouPage = () => {
   const searchParams = useSearchParams();
 
   // Verificar que searchParams no sea null antes de usarlo
@@ -29,4 +29,4 @@ const ThankYouPageWrapper = () => {
   );
 };
 
-export default ThankYouPageWrapper;
+export default ThankYouPage;
