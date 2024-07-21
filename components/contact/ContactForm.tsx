@@ -55,7 +55,7 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
-        if (typeof window !== 'undefined' && window.fbq) {
+        if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
           window.fbq('track', 'CompleteRegistration');
         } else {
           console.error("Facebook Pixel is not loaded");
