@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Hero } from "@/components/webinar/hero/Hero";
 import { Reviews } from "@/components/webinar/videoReviews/Reviews";
 import { Faqs } from "@/components/webinar/faqs/Faqs";
@@ -11,15 +12,11 @@ import phone from "@/public/assets/images/webinar/basketball/2.avif";
 import player from "@/public/assets/images/webinar/basketball/3.avif";
 import { LazyMotion, domAnimation } from "framer-motion";
 
-import { usePathname } from "next/navigation";
-// import titleimage from "@/public/assets/images/webinar/basketball/title.png";
-
-export default function Home() {
+const WebinarPage = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Check if the current route contains "/webinar/"
-    if (pathname.includes("/webinar/")) {
+    if (pathname && pathname.includes("/webinar/")) {
       const eventSourceUrl = window.location.href; // Get current page URL as event source URL
       const clientUserAgent = navigator.userAgent; // Get client user agent
 
@@ -74,7 +71,7 @@ export default function Home() {
         <Hero
           title="The PERFECT method to improve your Basketball performance"
           alt="Basketball Video Webinar"
-          video="https://player.vimeo.com/video/984496825?h=fa6147f2c6"  // Change the video ID to the id of the webinar videohttps://youtu.be/xKiBUWaOBXw
+          video="https://player.vimeo.com/video/984496825?h=fa6147f2c6" // Change the video ID to the id of the webinar videohttps://youtu.be/xKiBUWaOBXw
         />
         <DelayComponent delay={60000}>
           <InfoSection
@@ -198,4 +195,6 @@ export default function Home() {
       </LazyMotion>
     </section>
   );
-}
+};
+
+export default WebinarPage;
