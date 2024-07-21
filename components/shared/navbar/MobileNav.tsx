@@ -1,75 +1,46 @@
 "use client";
 import React from "react";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import Image from "next/image";
-import menu from "@/public/assets/icons/menu.svg";
-import { NavLinksData } from "@/constants/navLinksData";
-import Link from "next/link";
-import logo from "@/public/assets/icons/tbl-logo.png";
-import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { MenuIcon } from "@/components/icons/menu-icon";
 
 const MobileNav = () => {
   const router = usePathname();
-  const isNotWebinarPage = !router.includes("/webinar");
+  const isNotWebinarPage = router ? !router.includes("/webinar") : true;
 
   return (
     // This is a Sheet, a shadcn component that allows you to create the mobile menu sidebar
     <Sheet>
-      <SheetTrigger asChild className="md:hidden">
-        <Image src={menu} alt="hamburguer menu icon" className="size-11" />
+      <SheetTrigger asChild>
+        <button className="p-2 rounded-md">
+          <MenuIcon />
+        </button>
       </SheetTrigger>
-      <SheetContent
-        side="right"
-        className="flex h-full w-screen flex-col items-start justify-start border-none bg-background_color"
-      >
-        {/* Logo */}
-        <SheetClose asChild>
-          <Link href="/" className="h-12 w-auto">
-            <Image src={logo} alt="the best level logo" className="h-12 w-11" />
-          </Link>
-        </SheetClose>
-        <div className="mb-6 mt-[64px] flex size-full flex-col items-start justify-between">
-          {/* Map function to render the navlinks */}
-          <div className="flex-start-col w-full gap-10">
-            {NavLinksData.map((item, i) => {
-              return (
-                <SheetClose key={i} asChild>
-                  <Link href={item.link} className="w-fit whitespace-nowrap">
-                    <p className="subtitle w-fit whitespace-nowrap text-white">
-                      {item.name}
-                    </p>
-                  </Link>
-                </SheetClose>
-              );
-            })}
-          </div>
-
-          {/* Button to take the test */}
-          {isNotWebinarPage && (
-            <SheetClose asChild>
-              <Button
-                asChild
-                className="flex-center h-[56px] border-2 border-solid border-primary_color bg-background_color px-6 py-3 hover:border-primary_200 hover:bg-primary_color"
-              >
-                <Link
-                  href="/contact"
-                  className="flex-center size-full text-text_color hover:text-background_color"
-                >
-                  <p className="text-20-bold">Contáctanos</p>
-                </Link>
-              </Button>
-            </SheetClose>
-          )}
-        </div>
+      <SheetContent side="left" className="p-0">
+        <nav>
+          <ul className="flex flex-col space-y-4 p-4">
+            <li>
+              <a href="/" className="block text-lg">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="/about" className="block text-lg">
+                About
+              </a>
+            </li>
+            {isNotWebinarPage && (
+              <li>
+                <a href="/contact" className="block text-lg">
+                  Contact
+                </a>
+              </li>
+            )}
+          </ul>
+        </nav>
       </SheetContent>
     </Sheet>
   );
 };
 
-export { MobileNav };
+export default MobileNav;
