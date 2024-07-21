@@ -3,13 +3,33 @@ import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
   try {
-    const { leadId, customer, eventSourceUrl, clientUserAgent, fbc, fbp } =
-      await req.json();
+    const formData = await req.json();
 
+    // Send data to your external API
+    const externalResponse = await fetch(
+      process.env.SEND_EMAIL_API_ENDPOINT as string,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const emailResponseData = await externalResponse.json();
+
+    // Data to send to Facebook
+    const { firstName, lastName, emailAddress, phoneNumber, aboutYou } = formData;
+    const eventName = "Lead";
+    const eventTime = Math.floor(Date.now() / 1000);
+    const clientUserAgent = req.headers.get("user-agent") || "";
+    const eventSourceUrl = req.headers.get("referer") || "";
+    const fbc = req.cookies.get("_fbc")?.value || "";
+    const fbp = req.cookies.get("_fbp")?.value || "";
+    const eventId: string = crypto.randomUUID();
     const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
     const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
-    const eventId: string = crypto.randomUUID();
-    const eventTime = Math.floor(Date.now() / 1000);
 
     if (!pixelId || !accessToken) {
       throw new Error("Facebook Pixel ID or Access Token is missing");
@@ -19,50 +39,53 @@ export async function POST(req: NextRequest) {
       req.headers.get("x-forwarded-for")?.split(",")[0] ||
       req.headers.get("x-real-ip");
 
-    const data = {
-      event_name: "Lead",
+    const fbEventData = {
+      event_name: eventName,
       event_time: eventTime,
       action_source: "website",
       event_id: eventId,
       event_source_url: eventSourceUrl,
       user_data: {
-        email: customer.email ? [crypto.createHash("sha256").update(customer.email).digest("hex")] : [],
-        phone: customer.phoneNumber ? [crypto.createHash("sha256").update(customer.phoneNumber).digest("hex")] : [],
+        email: [crypto.createHash('sha256').update(emailAddress).digest('hex')],
+        phone: [crypto.createHash('sha256').update(phoneNumber).digest('hex')],
         client_ip_address: clientIpAddress,
         client_user_agent: clientUserAgent,
-        fbc: fbc || "",
-        fbp: fbp || "",
-        fn: customer.firstName ? [crypto.createHash("sha256").update(customer.firstName).digest("hex")] : [],
-        ln: customer.lastName ? [crypto.createHash("sha256").update(customer.lastName).digest("hex")] : [],
+        fbc: fbc,
+        fbp: fbp,
+        fn: crypto.createHash('sha256').update(firstName).digest('hex'),
+        ln: crypto.createHash('sha256').update(lastName).digest('hex'),
+      },
+      custom_data: {
+        aboutYou: aboutYou,
       },
     };
 
-    const response = await fetch(
+    const fbResponse = await fetch(
       `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ data: [data] }),
+        body: JSON.stringify({ data: [fbEventData] }),
       }
     );
 
-    const responseData = await response.json();
+    const fbResponseData = await fbResponse.json();
 
-    if (!response.ok) {
-      console.error("Error response from Facebook:", responseData);
+    if (!fbResponse.ok) {
+      console.error("Error response from Facebook:", fbResponseData);
       return NextResponse.json(
-        { error: "Error sending lead event to Facebook" },
+        { error: "Error sending event to Facebook" },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ success: true, responseData }, { status: 200 });
+    return NextResponse.json({ success: true, emailResponseData, fbResponseData }, { status: 200 });
   } catch (error) {
-    console.error("Error sending lead event to Facebook:", error);
+    console.error("Error sending message or event to Facebook:", error);
     return NextResponse.json(
-      { error: "Error sending lead event to Facebook" },
+      { error: "Error sending message or event to Facebook" },
       { status: 500 }
     );
   }
