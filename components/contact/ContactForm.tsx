@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import React, { useState } from "react";
+import { fadeIn, show } from "@/utils/motion";
 import { m } from "framer-motion";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -14,7 +15,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input, Textarea } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const pricingFormSchema = z.object({
@@ -26,12 +26,11 @@ const pricingFormSchema = z.object({
 });
 
 const ContactForm = () => {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
-  const isMobile = useIsMobile();
 
-  const form = useForm({
+  // Form function
+  const form = useForm<z.infer<typeof pricingFormSchema>>({
     resolver: zodResolver(pricingFormSchema),
     defaultValues: {
       firstName: "",
@@ -42,11 +41,36 @@ const ContactForm = () => {
     },
   });
 
-  const handleSubmit = async (values) => {
+  // Handle Form Submit
+  const handleSubmit = async (values: z.infer<typeof pricingFormSchema>) => {
     setLoading(true);
+
     try {
-      const combinedData = { ...values };
-      const response = await fetch("/api/contact-send", {
+      // Retrieve data from local storage
+      const userSportsAnswers = localStorage.getItem("userSportsAnswers");
+      let combinedData;
+
+      if (userSportsAnswers) {
+        combinedData = {
+          ...JSON.parse(userSportsAnswers),
+          name: values.firstName,
+          lastName: values.lastName,
+          email: values.emailAddress,
+          phoneNumber: values.phoneNumber,
+          aboutYou: values.aboutYou,
+        };
+      } else {
+        combinedData = {
+          name: values.firstName,
+          lastName: values.lastName,
+          email: values.emailAddress,
+          phoneNumber: values.phoneNumber,
+          aboutYou: values.aboutYou,
+        };
+      }
+
+      // Send data to external API
+      const externalApiResponse = await fetch("/api/contact-send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,22 +78,17 @@ const ContactForm = () => {
         body: JSON.stringify(combinedData),
       });
 
-      if (response.ok) {
-        if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-          window.fbq('track', 'CompleteRegistration');
-        } else {
-          console.error("Facebook Pixel is not loaded");
-        }
-        setSent(true);
-      } else {
-        console.error("Failed to send form data");
-      }
+      const externalApiData = await externalApiResponse.json();
+      console.log("Message sent successfully", externalApiData);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error(error);
     } finally {
       setLoading(false);
+      setSent(true);
     }
   };
+
+  const isMobile = useIsMobile();
 
   return (
     <section className="flex-center-col w-full gap-[60px] bg-background_color px-6 pb-[64px] pt-8 sm:px-[40px] md:px-[100px] md:pb-[96px]">

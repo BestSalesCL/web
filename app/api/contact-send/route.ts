@@ -50,13 +50,13 @@ export async function POST(req: NextRequest) {
         phone: [phoneNumber],
         client_ip_address: clientIpAddress,
         client_user_agent: clientUserAgent,
-        fbc: fbc,
-        fbp: fbp,
+        fbc,
+        fbp,
         fn: firstName,
         ln: lastName,
       },
       custom_data: {
-        aboutYou: aboutYou,
+        aboutYou,
       },
     };
 

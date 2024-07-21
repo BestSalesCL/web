@@ -7,22 +7,22 @@ import { useRouter } from 'next/router';
 import { FB_PIXEL_ID, pageview } from '@/lib/fbpixel';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const router = useRouter();
-
   useEffect(() => {
     const handleRouteChange = () => {
       pageview();
     };
 
+    const router = useRouter();
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
-  }, [router.events]);
+  }, []);
 
   return (
     <main className="relative flex flex-col items-center justify-start bg-background_color">
       <Script
+        id="fb-pixel"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
