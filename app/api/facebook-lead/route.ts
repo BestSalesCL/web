@@ -46,8 +46,8 @@ export async function POST(req: NextRequest) {
       event_id: eventId,
       event_source_url: eventSourceUrl,
       user_data: {
-        email: [crypto.createHash('sha256').update(emailAddress).digest('hex')],
-        phone: [crypto.createHash('sha256').update(phoneNumber).digest('hex')],
+        em: [crypto.createHash('sha256').update(emailAddress).digest('hex')],
+        ph: [crypto.createHash('sha256').update(phoneNumber).digest('hex')],
         client_ip_address: clientIpAddress,
         client_user_agent: clientUserAgent,
         fbc: fbc,
