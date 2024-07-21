@@ -81,13 +81,19 @@ const ContactForm = () => {
         body: JSON.stringify(combinedData),
       });
 
-      const externalApiData = await externalApiResponse.json();
-      console.log("Message sent successfully", externalApiData);
+      if (externalApiResponse.ok) {
+        // Trigger the 'CompleteRegistration' event in Facebook
+        if (window.fbq) {
+          fbq('track', 'CompleteRegistration');
+        }
+        setSent(true);
+      } else {
+        console.error("Error sending message");
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Error:", error);
     } finally {
       setLoading(false);
-      setSent(true);
     }
   };
 
