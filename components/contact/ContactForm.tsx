@@ -51,19 +51,21 @@ const ContactForm = () => {
       if (userSportsAnswers) {
         combinedData = {
           ...JSON.parse(userSportsAnswers),
-          name: values.firstName,
-          lastName: values.lastName,
+          name: `${values.firstName} ${values.lastName}`,
           email: values.emailAddress,
+          phoneNumber: values.phoneNumber,
           aboutYou: values.aboutYou,
-          phoneNumber: values.phoneNumber, // Add phone number to combinedData
+          eventSourceUrl: window.location.href,
+          clientUserAgent: navigator.userAgent,
         };
       } else {
         combinedData = {
-          name: values.firstName,
-          lastName: values.lastName,
+          name: `${values.firstName} ${values.lastName}`,
           email: values.emailAddress,
+          phoneNumber: values.phoneNumber,
           aboutYou: values.aboutYou,
-          phoneNumber: values.phoneNumber, // Add phone number to combinedData
+          eventSourceUrl: window.location.href,
+          clientUserAgent: navigator.userAgent,
         };
       }
 
@@ -81,9 +83,19 @@ const ContactForm = () => {
 
       if (externalApiResponse.ok) {
         // Trigger the 'CompleteRegistration' event in Facebook
-        if (typeof window !== "undefined" && window.fbq) {
-          window.fbq('track', 'CompleteRegistration');
-        }
+        const fbEventData = {
+          ...combinedData,
+          fbc: getCookie('_fbc'),
+          fbp: getCookie('_fbp'),
+        };
+        await fetch('/api/facebook-complete-registration', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(fbEventData),
+        });
+
         setSent(true);
       } else {
         console.error("Error response from external API:", externalApiData);
@@ -242,6 +254,12 @@ const ContactForm = () => {
       </m.div>
     </section>
   );
+};
+
+const getCookie = (name: string) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(";").shift();
 };
 
 export { ContactForm };
