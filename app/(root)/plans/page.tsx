@@ -1,15 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
-import { Pricing } from "@/components/webinar/pricing/Pricing";
-import { LazyMotion, domAnimation } from "framer-motion";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-export default function Soccer() {
+const PlansPage = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Check if the current route contains "/plans"
-    if (pathname.includes("/plans")) {
+    // Check if pathname is not null and contains "/plans"
+    if (pathname && pathname.includes("/plans")) {
       const eventSourceUrl = window.location.href; // Get current page URL as event source URL
       const clientUserAgent = navigator.userAgent; // Get client user agent
 
@@ -22,20 +20,22 @@ export default function Soccer() {
       const fbc = getCookie("_fbc");
       const fbp = getCookie("_fbp");
 
-      // Send event to the Facebook API
-      const sendEvent = async () => {
+      const timer = setTimeout(async () => {
         const eventTime = Math.floor(new Date().getTime() / 1000);
         const eventData = {
-          eventName: "VisitPlans",
+          eventName: "TimeSpent",
           eventTime,
           fbc,
           fbp,
           eventSourceUrl,
           clientUserAgent,
+          customData: {
+            time_spent: "1 minute",
+          },
         };
 
         // Call API to send the event to Facebook
-        const response = await fetch("/api/facebook-visit-plans", {
+        const response = await fetch("/api/facebook-time-spent", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -50,17 +50,18 @@ export default function Soccer() {
         } else {
           console.log("Event sent successfully to Facebook", data);
         }
-      };
+      }, 60000); // 1 minute in milliseconds
 
-      sendEvent();
+      return () => clearTimeout(timer); // Cleanup the timer on component unmount
     }
   }, [pathname]);
 
   return (
-    <section className="flex-center-col size-full overflow-hidden">
-      <LazyMotion features={domAnimation}>
-        <Pricing />
-      </LazyMotion>
+    <section>
+      {/* Your page content here */}
+      <h1>Plans Page</h1>
     </section>
   );
-}
+};
+
+export default PlansPage;
