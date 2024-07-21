@@ -2,7 +2,8 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { MenuIcon } from "@/components/icons/menu-icon";
+import Image from "next/image";
+import menuIcon from "@/public/assets/icons/menu.svg";
 
 const MobileNav = () => {
   const router = usePathname();
@@ -13,7 +14,7 @@ const MobileNav = () => {
     <Sheet>
       <SheetTrigger asChild>
         <button className="p-2 rounded-md">
-          <MenuIcon />
+          <Image src={menuIcon} alt="Menu Icon" width={24} height={24} />
         </button>
       </SheetTrigger>
       <SheetContent side="left" className="p-0">
