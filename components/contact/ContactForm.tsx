@@ -1,16 +1,20 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
-import { fadeIn, show } from "@/utils/motion";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { m } from "framer-motion";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import {
-  Form, FormControl, FormField, FormItem, FormLabel, FormMessage
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
-import { Input, Textarea } from "@/components/ui/input";  // Importa ambos componentes
-import { useRouter } from "next/navigation";
+import { Input, Textarea } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import useIsMobile from "@/hooks/useIsMobile";
 
 const pricingFormSchema = z.object({
@@ -22,13 +26,12 @@ const pricingFormSchema = z.object({
 });
 
 const ContactForm = () => {
-  const router = useRouter(); // eslint-disable-line
-
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const isMobile = useIsMobile();
 
-  // Form function
-  const form = useForm<z.infer<typeof pricingFormSchema>>({
+  const form = useForm({
     resolver: zodResolver(pricingFormSchema),
     defaultValues: {
       firstName: "",
@@ -39,38 +42,11 @@ const ContactForm = () => {
     },
   });
 
-  // Handle Form Submit
-  const handleSubmit = async (values: z.infer<typeof pricingFormSchema>) => {
+  const handleSubmit = async (values) => {
     setLoading(true);
-
     try {
-      // Retrieve data from local storage
-      const userSportsAnswers = localStorage.getItem("userSportsAnswers");
-      let combinedData;
-
-      if (userSportsAnswers) {
-        combinedData = {
-          ...JSON.parse(userSportsAnswers),
-          name: `${values.firstName} ${values.lastName}`,
-          email: values.emailAddress,
-          phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
-          eventSourceUrl: window.location.href,
-          clientUserAgent: navigator.userAgent,
-        };
-      } else {
-        combinedData = {
-          name: `${values.firstName} ${values.lastName}`,
-          email: values.emailAddress,
-          phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
-          eventSourceUrl: window.location.href,
-          clientUserAgent: navigator.userAgent,
-        };
-      }
-
-      // Send data to external API
-      const externalApiResponse = await fetch("/api/contact-send", {
+      const combinedData = { ...values };
+      const response = await fetch("/api/contact-send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,36 +54,22 @@ const ContactForm = () => {
         body: JSON.stringify(combinedData),
       });
 
-      const externalApiData = await externalApiResponse.json();
-      console.log("Message sent successfully", externalApiData);
-
-      if (externalApiResponse.ok) {
-        // Trigger the 'CompleteRegistration' event in Facebook
-        const fbEventData = {
-          ...combinedData,
-          fbc: getCookie('_fbc'),
-          fbp: getCookie('_fbp'),
-        };
-        await fetch('/api/facebook-complete-registration', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(fbEventData),
-        });
-
+      if (response.ok) {
+        if (typeof window !== 'undefined' && window.fbq) {
+          window.fbq('track', 'CompleteRegistration');
+        } else {
+          console.error("Facebook Pixel is not loaded");
+        }
         setSent(true);
       } else {
-        console.error("Error response from external API:", externalApiData);
+        console.error("Failed to send form data");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error submitting form:", error);
     } finally {
       setLoading(false);
     }
   };
-
-  const isMobile = useIsMobile();
 
   return (
     <section className="flex-center-col w-full gap-[60px] bg-background_color px-6 pb-[64px] pt-8 sm:px-[40px] md:px-[100px] md:pb-[96px]">
@@ -254,12 +216,6 @@ const ContactForm = () => {
       </m.div>
     </section>
   );
-};
-
-const getCookie = (name: string) => {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop()?.split(";").shift();
 };
 
 export { ContactForm };
