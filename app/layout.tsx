@@ -10,7 +10,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const GTM_ID: string = "GTM-P7894KWF";
+const GTM_ID: string = "GTM-TX9DXVGP";
 
 export const metadata: Metadata = {
   title: "The Best Level",
