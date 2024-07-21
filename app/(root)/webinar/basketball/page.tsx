@@ -1,25 +1,12 @@
 "use client";
 import React, { useEffect } from "react";
-import { Hero } from "@/components/webinar/hero/Hero";
-import { Reviews } from "@/components/webinar/videoReviews/Reviews";
-import { Faqs } from "@/components/webinar/faqs/Faqs";
-import { InfoSection } from "@/components/webinar/info/InfoSection";
-import { Pricing } from "@/components/webinar/pricing/Pricing";
-import DelayComponent from "@/components/shared/delay/DelayComponent";
-import desktop from "@/public/assets/images/webinar/basketball/1.avif";
-import phone from "@/public/assets/images/webinar/basketball/2.avif";
-import player from "@/public/assets/images/webinar/basketball/3.avif";
-import { LazyMotion, domAnimation } from "framer-motion";
-
 import { usePathname } from "next/navigation";
-// import titleimage from "@/public/assets/images/webinar/basketball/title.png";
 
-export default function Home() {
+const WebinarPage = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Check if the current route contains "/webinar/"
-    if (pathname.includes("/webinar/")) {
+    if (pathname && pathname.includes("/webinar/")) {
       const eventSourceUrl = window.location.href; // Get current page URL as event source URL
       const clientUserAgent = navigator.userAgent; // Get client user agent
 
