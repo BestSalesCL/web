@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // Importa useRouter
+import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input, Textarea } from "@/components/ui/input";
-import { Button } from "@/components/ui/button"; // Importa Button
+import { Button } from "@/components/ui/button";
 
 const pricingFormSchema = z.object({
   firstName: z.string().min(1, "Please enter your name"),
@@ -24,11 +24,10 @@ const pricingFormSchema = z.object({
 });
 
 const ContactForm = () => {
-  const router = useRouter(); // Usa useRouter para manejar la redirección
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
-  // Form function
   const form = useForm<z.infer<typeof pricingFormSchema>>({
     resolver: zodResolver(pricingFormSchema),
     defaultValues: {
@@ -40,12 +39,10 @@ const ContactForm = () => {
     },
   });
 
-  // Handle Form Submit
   const handleSubmit = async (values: z.infer<typeof pricingFormSchema>) => {
     setLoading(true);
 
     try {
-      // Retrieve data from local storage
       const userSportsAnswers = localStorage.getItem("userSportsAnswers");
       let combinedData;
 
@@ -68,7 +65,6 @@ const ContactForm = () => {
         };
       }
 
-      // Send data to external API
       const externalApiResponse = await fetch("/api/contact-send", {
         method: "POST",
         headers: {
@@ -80,7 +76,11 @@ const ContactForm = () => {
       const externalApiData = await externalApiResponse.json();
       console.log("Message sent successfully", externalApiData);
 
-      // Redirigir a la página de "completado"
+      // Enviar evento de Facebook
+      if (window.fbq) {
+        window.fbq("track", "CompleteRegistration");
+      }
+
       router.push("/completado");
     } catch (error) {
       console.error(error);
