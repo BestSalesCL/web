@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
-const ThankYouPage = () => {
+const ThankYouPageWrapper = () => {
   const searchParams = useSearchParams();
 
   // Verificar que searchParams no sea null antes de usarlo
@@ -29,4 +29,4 @@ const ThankYouPage = () => {
   );
 };
 
-export default ThankYouPage;
+export default ThankYouPageWrapper;
