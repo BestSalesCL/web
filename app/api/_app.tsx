@@ -1,10 +1,11 @@
-import { AppProps } from "next/app";
-import Script from "next/script";
+import { AppProps } from 'next/app';
+import Script from 'next/script';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Script
+        id="facebook-pixel"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `

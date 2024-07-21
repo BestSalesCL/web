@@ -5,8 +5,8 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <Script
-            strategy="afterInteractive"
+          <script
+            id="facebook-pixel"
             dangerouslySetInnerHTML={{
               __html: `
                 (function(f, b, e, v, n, t, s) {
