@@ -7,12 +7,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+  Form, FormControl, FormField, FormItem, FormLabel, FormMessage
 } from "@/components/ui/form";
 import { Input, Textarea } from "@/components/ui/input";  // Importa ambos componentes
 import { useRouter } from "next/navigation";
@@ -59,16 +54,16 @@ const ContactForm = () => {
           name: values.firstName,
           lastName: values.lastName,
           email: values.emailAddress,
-          phoneNumber: values.phoneNumber,
           aboutYou: values.aboutYou,
+          phoneNumber: values.phoneNumber, // Add phone number to combinedData
         };
       } else {
         combinedData = {
           name: values.firstName,
           lastName: values.lastName,
           email: values.emailAddress,
-          phoneNumber: values.phoneNumber,
           aboutYou: values.aboutYou,
+          phoneNumber: values.phoneNumber, // Add phone number to combinedData
         };
       }
 
@@ -81,17 +76,20 @@ const ContactForm = () => {
         body: JSON.stringify(combinedData),
       });
 
+      const externalApiData = await externalApiResponse.json();
+      console.log("Message sent successfully", externalApiData);
+
       if (externalApiResponse.ok) {
         // Trigger the 'CompleteRegistration' event in Facebook
-        if (window.fbq) {
-          fbq('track', 'CompleteRegistration');
+        if (typeof window !== "undefined" && window.fbq) {
+          window.fbq('track', 'CompleteRegistration');
         }
         setSent(true);
       } else {
-        console.error("Error sending message");
+        console.error("Error response from external API:", externalApiData);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
