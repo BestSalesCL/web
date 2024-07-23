@@ -9,7 +9,7 @@ type Stats = {
   name: string;
   image: string | StaticImageData;
   alt: string;
-  number: string;
+  number: number;
   scale?: string;
   pre?: string;
 };
@@ -19,14 +19,14 @@ export const StatsData: Stats[] = [
     name: "Anuncios Activos",
     image: dumbbell,
     alt: "dumbbell icon",
-    number: "2.000",
+    number: 2.000,
     pre: "+",
   },
   {
     name: "Clientes Captados",
     image: stats,
     alt: "sports icon",
-    number: "2.5",
+    number: 2.5,
     scale: "M",
     pre: "+",
   },
@@ -34,21 +34,22 @@ export const StatsData: Stats[] = [
     name: "Campañas Creadas",
     image: sports,
     alt: "variable stats icon",
-    number: "73",
+    number: 73,
 
   },
   {
     name: "Mensajes Recibidos",
     image: experience,
     alt: "years of experience icon",
-    number: "20.000",
+    number: 20.000,
     pre: "+",
   },
   {
     name: "Soporte y Atención",
     image: earth,
     alt: "earth icon",
-    number: "24/7",
+    number: 24,
+    pre: "Hrs",
 
   },
 ];
