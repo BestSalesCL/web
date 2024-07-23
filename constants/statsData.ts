@@ -49,7 +49,7 @@ export const StatsData: Stats[] = [
     image: earth,
     alt: "earth icon",
     number: 24,
-    pre: "Hrs",
+    pre: "Hrs ",
 
   },
 ];
