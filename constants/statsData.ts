@@ -45,7 +45,7 @@ export const StatsData: Stats[] = [
     pre: "+",
   },
   {
-    name: "Atencion",
+    name: "Soporte y Atención",
     image: earth,
     alt: "earth icon",
     number: 24/7,
