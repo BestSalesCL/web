@@ -45,10 +45,10 @@ export const StatsData: Stats[] = [
     pre: "+",
   },
   {
-    name: "Años de Experiencia",
+    name: "Atencion",
     image: earth,
     alt: "earth icon",
-    number: 16,
+    number: 24/7,
 
   },
 ];
