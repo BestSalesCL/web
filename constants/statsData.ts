@@ -9,7 +9,7 @@ type Stats = {
   name: string;
   image: string | StaticImageData;
   alt: string;
-  number: number;
+  number?: number;
   scale?: string;
   pre?: string;
 };
@@ -48,7 +48,7 @@ export const StatsData: Stats[] = [
     name: "Soporte y Atención",
     image: earth,
     alt: "earth icon",
-    number: 24/7,
+    pre: "24/7",
 
   },
 ];
