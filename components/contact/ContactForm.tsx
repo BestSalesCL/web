@@ -14,8 +14,8 @@ const pricingFormSchema = z.object({
   lastName: z.string().min(1, "Please enter your name"),
   emailAddress: z.string().email(),
   phoneNumber: z.string().min(8, "Please enter a valid phone number"),
-  aboutYou: z.string().min(1, "Please tell us a bit about yourself"),
   newField: z.string().min(1, "Please enter a value for the new field"), // Nuevo campo
+  aboutYou: z.string().min(1, "Please tell us a bit about yourself"),
 });
 
 const ContactForm = () => {
@@ -31,8 +31,8 @@ const ContactForm = () => {
       lastName: "",
       emailAddress: "",
       phoneNumber: "",
-      aboutYou: "",
       newField: "", // Valor por defecto para el nuevo campo
+      aboutYou: "",
     },
   });
 
@@ -50,8 +50,8 @@ const ContactForm = () => {
           lastName: values.lastName,
           email: values.emailAddress,
           phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
           newField: values.newField, // Incluir el nuevo campo en los datos combinados
+          aboutYou: values.aboutYou,
         };
       } else {
         combinedData = {
@@ -59,8 +59,8 @@ const ContactForm = () => {
           lastName: values.lastName,
           email: values.emailAddress,
           phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
           newField: values.newField, // Incluir el nuevo campo en los datos combinados
+          aboutYou: values.aboutYou,
         };
       }
 
@@ -146,12 +146,12 @@ const ContactForm = () => {
             />
             <FormField
               control={form.control}
-              name="aboutYou"
+              name="newField"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel className="text-text_color">{t('Cuéntanos un poco de ti')}</FormLabel>
+                  <FormLabel className="text-text_color">{t('Cuánto es tu presupuesto mensual para invertir')}</FormLabel>
                   <FormControl>
-                    <Textarea {...field} placeholder={t('Escribe sobre tu negocio')} className="h-[150px]" />
+                    <Input {...field} placeholder={t('Ingresa un valor para el nuevo campo')} type="text" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -159,12 +159,12 @@ const ContactForm = () => {
             />
             <FormField
               control={form.control}
-              name="newField"
+              name="aboutYou"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel className="text-text_color">{t('Nuevo Campo')}</FormLabel>
+                  <FormLabel className="text-text_color">{t('Cuéntanos un poco de ti')}</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder={t('Ingresa un valor para el nuevo campo')} type="text" />
+                    <Textarea {...field} placeholder={t('Escribe sobre tu negocio')} className="h-[150px]" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
