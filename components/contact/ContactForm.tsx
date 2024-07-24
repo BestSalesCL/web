@@ -151,7 +151,7 @@ const ContactForm = () => {
                 <FormItem className="w-full">
                   <FormLabel className="text-text_color">{t('Cuánto es tu presupuesto mensual para invertir')}</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder={t('Ingresa un valor para el nuevo campo')} type="text" />
+                    <Input {...field} placeholder={t('Ingresa tu presupuesto mensual')} type="text" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
