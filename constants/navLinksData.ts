@@ -14,6 +14,6 @@ export const NavLinksData: Links[] = [
   },
   {
     name: "Masterclass",
-    link: "/masterclass",
+    link: "https://www.thebestsales.co/masterclass",
   },
 ];
