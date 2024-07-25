@@ -3,7 +3,7 @@ import athlete2 from "@/public/assets/images/athletes/2.avif";
 import athlete3 from "@/public/assets/images/athletes/3.avif";
 import athlete4 from "@/public/assets/images/athletes/4.avif";
 import athlete5 from "@/public/assets/images/athletes/5.avif";
-import athlete6 from "@/public/assets/images/athletes/6.avif";
+// import athlete6 from "@/public/assets/images/athletes/6.avif";
 
 import { StaticImageData } from "next/image";
 
@@ -16,17 +16,6 @@ type Athletes = {
 };
 
 export const AthleteReviewsData: Athletes[] = [
-  {
-    // Change the name text to add the real athlete name
-    name: "Rafael Albornoz",
-
-    // Change the review text to add the athlete review
-    review:
-      "“Significantly helped me regain strength in my spike and jump for volleyball.”",
-    position: "-Volleyball Player",
-    image: athlete6,
-    alt: "volleyball player",
-  },
   {
     name: "Marianne Saintard",
     review:
