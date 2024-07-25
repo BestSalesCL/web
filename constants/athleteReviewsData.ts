@@ -20,7 +20,7 @@ export const AthleteReviewsData: Athletes[] = [
     name: "Dr. Joaquín González",
     review:
       "“Acabo de egresar de Medicina, empecé mi Marca personal y con BestSales pude lograr 3 videos con más de 100k. Y una media de 30 mil visualizaciones por video”",
-    position: "Marca Personal",
+    position: "-Marca Personal",
     image: athlete4,
     alt: "archery shooter",
   },
