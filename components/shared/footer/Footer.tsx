@@ -26,7 +26,7 @@ const Footer = () => {
           <div className="flex-begin-col h-fit w-full gap-8 sm:flex sm:items-center sm:justify-end md:flex-row md:justify-start">
             <div className="flex-start-col w-full gap-4 sm:flex-row sm:items-center">
               <Link
-                href="https://www.instagram.com/bestlevel_/"
+                href="https://www.instagram.com/bestsalesspa/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="size-8"
