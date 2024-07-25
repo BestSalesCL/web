@@ -27,7 +27,7 @@ export const AthleteReviewsData: Athletes[] = [
   {
     name: "Diego Perez",
     review:
-      "“Tengo 119 seguidores en mi Instagram, y genere más de 100 clientes a través de anuncios el último mes desde que contrate BestSales.”",
+      "“Tengo 119 seguidores en mi Instagram, y genere más de 100 clientes a través de anuncios el último mes desde que contrate BestSales. Generé ventas sin seguidores en redes sociales”",
     position: "-Tecno DPB",
     image: athlete2,
     alt: "Mountain Climber",
@@ -51,7 +51,7 @@ export const AthleteReviewsData: Athletes[] = [
   {
     name: "Gonzalo Schafer",
     review:
-      "“Empecé a dar conciertos y pasé de ver a mis familiares en el público, a no verlos entre la audiencia que se genera.”",
+      "“Empecé a dar conciertos y pasé de ver a mis familiares en el público, a no verlos entre la audiencia que se genera. Verdaderamente me ayudaron a crecer en mi carrera musical.”",
     position: "-DJ",
     image: athlete3,
     alt: "Football Player",
