@@ -17,42 +17,42 @@ type Athletes = {
 
 export const AthleteReviewsData: Athletes[] = [
   {
-    name: "Marianne Saintard",
+    name: "Dr. Joaquín González",
     review:
-      "“Greatly helped me endure the competition and shoot accurately throughout the entire event.”",
-    position: "-Archery Shooter",
+      "“Acabo de egresar de Medicina, empecé mi Marca personal y con BestSales pude lograr 3 videos con más de 100k. Y una media de 30 mil visualizaciones por video”",
+    position: "Marca Personal",
     image: athlete4,
     alt: "archery shooter",
   },
   {
-    name: "Jannice Rott",
+    name: "Diego Perez",
     review:
-      "“There was a noticeable before and after in how I trained, resulting in improved performance and confidence on the mountain.”",
-    position: "-Mountain Climber",
+      "“Tengo 119 seguidores en mi Instagram, y genere más de 100 clientes a través de anuncios el último mes desde que contrate BestSales.”",
+    position: "-Tecno DPB",
     image: athlete2,
     alt: "Mountain Climber",
   },
   {
-    name: "Cris Porter",
+    name: "Gabriel Valenzuela",
     review:
-      "“Significantly boosted my confidence on the field, feeling strong and fast like never before.”",
-    position: "-Soccer Player",
+      "“Estuve tomando decisiones de marketing durante un año sin saber del tema, consiguiendo pocos clientes. Contrate BestSales y pude conseguir lo que no había podido antes hacer.”",
+    position: "-Isekai Films",
     image: athlete5,
     alt: "football player",
   },
   {
-    name: "John Dlugoszewki",
+    name: "Ignacio Gonzalez",
     review:
-      "“Training with BestLevel I have managed to significantly improve all aspects of my game, I am on another level right now.”",
-    position: "-Basketball Player",
+      "“Estuve 1 año mejorando mi producto sin tener ni siquiera 1 cliente. Ahora, después de haber contratado a BestSales puedo gozar de mantener a mis clientes en la mejor forma física posible.”",
+    position: "-BestLevel",
     image: athlete1,
     alt: "Basketball Player",
   },
   {
-    name: "Alvaro Vicente",
+    name: "Gonzalo Schafer",
     review:
-      "“They helped me become an athlete from scratch, eventually reaching international competition over time.”",
-    position: "-Football Player",
+      "“Empecé a dar conciertos y pasé de ver a mis familiares en el público, a no verlos entre la audiencia que se genera.”",
+    position: "-DJ",
     image: athlete3,
     alt: "Football Player",
   },
