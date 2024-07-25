@@ -12,4 +12,8 @@ export const NavLinksData: Links[] = [
     name: "ADS",
     link: "#app",
   },
+  {
+    name: "Masterclass",
+    link: "/masterclass",
+  },
 ];
