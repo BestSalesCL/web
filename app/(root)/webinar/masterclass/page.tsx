@@ -59,7 +59,7 @@ const WebinarPage = () => {
         } else {
           console.log("Event sent successfully to Facebook", data);
         }
-      }, 3000000); // 10 minute in milliseconds
+      }, 60000); // 10 minute in milliseconds
 
       return () => clearTimeout(timer); // Cleanup the timer on component unmount
     }
@@ -69,9 +69,9 @@ const WebinarPage = () => {
     <section className="flex-center-col size-full overflow-hidden">
       <LazyMotion features={domAnimation}>
         <Hero
-          title="The PERFECT method to improve your Basketball performance"
-          alt="Basketball Video Webinar"
-          video="https://player.vimeo.com/video/984496825?h=fa6147f2c6" // Change the video ID to the id of the webinar videohttps://youtu.be/xKiBUWaOBXw
+          title="El PERFECTO embudo de ventas"
+          alt="Marketing Video Webinar"
+          video="https://player.vimeo.com/video/990412129?" // Change the video ID to the id of the webinar videohttps://youtu.be/xKiBUWaOBXw
         />
         <DelayComponent delay={60000}>
           <InfoSection
