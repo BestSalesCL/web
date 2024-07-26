@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 
     const emailResponseData = await externalResponse.json();
 
-    // Data to send to Facebook
+    // Prepare Facebook event data
     const { firstName, lastName, emailAddress, phoneNumber, aboutYou } = formData;
     const eventName = "Lead";
     const eventTime = Math.floor(Date.now() / 1000);
@@ -60,6 +60,7 @@ export async function POST(req: NextRequest) {
       },
     };
 
+    // Send data to Facebook API
     const fbResponse = await fetch(
       `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
       {
@@ -81,6 +82,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Log success message
+    console.log("Bien hecho: Data sent successfully to both external API and Facebook.");
+
+    // Successful response
     return NextResponse.json({ success: true, emailResponseData, fbResponseData }, { status: 200 });
   } catch (error) {
     console.error("Error sending message or event to Facebook:", error);
