@@ -40,14 +40,13 @@ export async function POST(req: NextRequest) {
       req.headers.get("x-real-ip");
 
     const fbEventData = {
-      event_name: eventName,
-      event_time: eventTime,
       action_source: "website",
       event_id: eventId,
-      event_source_url: eventSourceUrl,
+      event_name: eventName,
+      event_time: eventTime,
       user_data: {
-        em: [emailAddress],
-        ph: [phoneNumber],
+        em: emailAddress,
+        ph: phoneNumber,
         client_ip_address: clientIpAddress,
         client_user_agent: clientUserAgent,
         fbc: fbc,
