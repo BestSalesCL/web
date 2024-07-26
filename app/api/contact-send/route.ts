@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.json();
 
-    // Envía los datos a tu API externa
+    // Send the data to your external API
     const externalResponse = await fetch(
       process.env.SEND_EMAIL_API_ENDPOINT as string,
       {
@@ -19,8 +19,8 @@ export async function POST(req: NextRequest) {
 
     const emailResponseData = await externalResponse.json();
 
-    // Datos para enviar a Facebook
-    const { firstName, lastName, emailAddress, phoneNumber, aboutYou } = formData;
+    // Data to send to Facebook
+    const { firstName, lastName, emailAddress, phoneNumber } = formData;
     const eventName = "CompleteRegistration";
     const eventTime = Math.floor(Date.now() / 1000);
     const clientUserAgent = req.headers.get("user-agent") || "";
@@ -54,9 +54,6 @@ export async function POST(req: NextRequest) {
         fbp: fbp,
         fn: firstName,
         ln: lastName,
-      },
-      custom_data: {
-        aboutYou: aboutYou,
       },
     };
 
