@@ -3,13 +3,9 @@ import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
   try {
-    // Parse form data from the request body
     const formData = await req.json();
-    
-    // Data from the form
-    const { firstName, lastName, emailAddress, phoneNumber, aboutYou } = formData;
-    
-    // Send data to your external API
+
+    // Envía los datos a tu API externa
     const externalResponse = await fetch(
       process.env.SEND_EMAIL_API_ENDPOINT as string,
       {
@@ -23,7 +19,8 @@ export async function POST(req: NextRequest) {
 
     const emailResponseData = await externalResponse.json();
 
-    // Facebook event data setup
+    // Datos para enviar a Facebook
+    const { firstName, lastName, emailAddress, phoneNumber, aboutYou } = formData;
     const eventName = "CompleteRegistration";
     const eventTime = Math.floor(Date.now() / 1000);
     const clientUserAgent = req.headers.get("user-agent") || "";
@@ -38,16 +35,9 @@ export async function POST(req: NextRequest) {
       throw new Error("Facebook Pixel ID or Access Token is missing");
     }
 
-    // Extract client IP address from headers
     const clientIpAddress =
       req.headers.get("x-forwarded-for")?.split(",")[0] ||
       req.headers.get("x-real-ip");
-
-    // Hashing for Facebook
-    const hashedEmail = emailAddress ? crypto.createHash('sha256').update(emailAddress).digest('hex') : "";
-    const hashedPhoneNumber = phoneNumber ? crypto.createHash('sha256').update(phoneNumber).digest('hex') : "";
-    const hashedFirstName = firstName ? crypto.createHash('sha256').update(firstName).digest('hex') : "";
-    const hashedLastName = lastName ? crypto.createHash('sha256').update(lastName).digest('hex') : "";
 
     const fbEventData = {
       event_name: eventName,
@@ -56,21 +46,20 @@ export async function POST(req: NextRequest) {
       event_id: eventId,
       event_source_url: eventSourceUrl,
       user_data: {
-        em: hashedEmail ? [hashedEmail] : [],
-        ph: hashedPhoneNumber ? [hashedPhoneNumber] : [],
-        client_ip_address: clientIpAddress || "",
+        em: [emailAddress],
+        ph: [phoneNumber],
+        client_ip_address: clientIpAddress,
         client_user_agent: clientUserAgent,
         fbc: fbc,
         fbp: fbp,
-        fn: hashedFirstName,
-        ln: hashedLastName,
+        fn: firstName,
+        ln: lastName,
       },
       custom_data: {
         aboutYou: aboutYou,
       },
     };
 
-    // Send event to Facebook
     const fbResponse = await fetch(
       `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
       {
