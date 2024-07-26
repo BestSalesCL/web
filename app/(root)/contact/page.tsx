@@ -4,13 +4,13 @@ import { usePathname } from "next/navigation";
 import { Hero } from "@/components/webinar/hero/Hero";
 import { Reviews } from "@/components/webinar/videoReviews/Reviews";
 import { Faqs } from "@/components/webinar/faqs/Faqs";
-import { InfoSection } from "@/components/webinar/info/InfoSection";
+//import { InfoSection } from "@/components/webinar/info/InfoSection";
 import { ContactHero } from "@/components/contact/ContactHero";
 import { ContactForm } from "@/components/contact/ContactForm";
 import DelayComponent from "@/components/shared/delay/DelayComponent";
-import desktop from "@/public/assets/images/webinar/basketball/1.avif";
-import phone from "@/public/assets/images/webinar/basketball/2.avif";
-import player from "@/public/assets/images/webinar/basketball/3.avif";
+//import desktop from "@/public/assets/images/webinar/basketball/1.avif";
+//import phone from "@/public/assets/images/webinar/basketball/2.avif";
+//import player from "@/public/assets/images/webinar/basketball/3.avif";
 
 import { LazyMotion, domAnimation } from "framer-motion";
 
