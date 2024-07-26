@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
     const emailResponseData = await externalResponse.json();
 
     // Data to send to Facebook
+    const { firstName, lastName, emailAddress, phoneNumber } = formData;
     const eventName = "CompleteRegistration";
     const eventTime = Math.floor(Date.now() / 1000);
     const clientUserAgent = req.headers.get("user-agent") || "";
@@ -43,10 +44,14 @@ export async function POST(req: NextRequest) {
       action_source: "website",
       event_id: eventId,
       user_data: {
+        em: [emailAddress],
+        ph: [phoneNumber],
         client_ip_address: clientIpAddress,
         client_user_agent: clientUserAgent,
         fbc: fbc,
         fbp: fbp,
+        fn: firstName,  // First Name
+        ln: lastName,   // Last Name
       },
     };
 

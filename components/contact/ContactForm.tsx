@@ -46,22 +46,23 @@ const ContactForm = () => {
       if (userSportsAnswers) {
         combinedData = {
           ...JSON.parse(userSportsAnswers),
-          firstName: values.firstName,    // Send firstName separately
-          lastName: values.lastName,      // Send lastName separately
+          firstName: values.firstName,
+          lastName: values.lastName,
           emailAddress: values.emailAddress,
           phoneNumber: values.phoneNumber,
           aboutYou: values.aboutYou,
         };
       } else {
         combinedData = {
-          firstName: values.firstName,    // Send firstName separately
-          lastName: values.lastName,      // Send lastName separately
+          firstName: values.firstName,
+          lastName: values.lastName,
           emailAddress: values.emailAddress,
           phoneNumber: values.phoneNumber,
           aboutYou: values.aboutYou,
         };
       }
   
+      // Send data to your external API
       const externalApiResponse = await fetch("/api/contact-send", {
         method: "POST",
         headers: {
@@ -73,6 +74,57 @@ const ContactForm = () => {
       const externalApiData = await externalApiResponse.json();
       console.log("Message sent successfully", externalApiData);
   
+      // Send data to Facebook
+      const eventName = "CompleteRegistration";
+      const eventTime = Math.floor(Date.now() / 1000);
+      const clientUserAgent = navigator.userAgent;
+      const fbc = document.cookie.match(/_fbc=([^;]*)/)?.[1] || "";
+      const fbp = document.cookie.match(/_fbp=([^;]*)/)?.[1] || "";
+      const eventId = crypto.randomUUID();
+      const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
+      const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
+  
+      if (!pixelId || !accessToken) {
+        throw new Error("Facebook Pixel ID or Access Token is missing");
+      }
+  
+      const clientIpAddress = ""; // Get IP address from server-side or another method
+  
+      const fbEventData = {
+        event_name: eventName,
+        event_time: eventTime,
+        action_source: "website",
+        event_id: eventId,
+        user_data: {
+          em: [values.emailAddress],
+          ph: [values.phoneNumber],
+          client_ip_address: clientIpAddress,
+          client_user_agent: clientUserAgent,
+          fbc: fbc,
+          fbp: fbp,
+          fn: values.firstName,
+          ln: values.lastName,
+        },
+      };
+  
+      const fbResponse = await fetch(
+        `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify([fbEventData]), // Send the event data as an array
+        }
+      );
+  
+      const fbResponseData = await fbResponse.json();
+  
+      if (!fbResponse.ok) {
+        console.error("Error response from Facebook:", fbResponseData);
+        throw new Error("Error sending event to Facebook");
+      }
+  
       router.push("/completado");
     } catch (error) {
       console.error(error);
@@ -81,6 +133,8 @@ const ContactForm = () => {
       setSent(true);
     }
   };
+  
+
   
 
 
