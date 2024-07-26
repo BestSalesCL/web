@@ -69,7 +69,7 @@ const config = {
       text_color: "#ECEDEF",
       accent_color: "#3677FA",
       secondary_color: "#113B8D",
-      primary_color: "#EEB720",
+      primary_color: "#00C2CB",
       white: "#FFFFFF",
       black: "#000000",
       transparent: "rgba(255, 255, 255, 0)",
