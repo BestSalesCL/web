@@ -78,9 +78,11 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, emailResponseData, fbResponseData }, { status: 200 });
   } catch (error) {
-    console.error("Error sending message or event to Facebook:", error);
+    // Type guard to check if error is an instance of Error
+    const errorMessage = (error instanceof Error) ? error.message : "Unknown error";
+    console.error("Error sending message or event to Facebook:", errorMessage);
     return NextResponse.json(
-      { error: "Error sending message or event to Facebook", details: error.message },
+      { error: "Error sending message or event to Facebook", details: errorMessage },
       { status: 500 }
     );
   }
