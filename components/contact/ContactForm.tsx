@@ -37,48 +37,51 @@ const ContactForm = () => {
   });
 
   const handleSubmit = async (values: z.infer<typeof pricingFormSchema>) => {
-  setLoading(true);
-
-  try {
-    const userSportsAnswers = localStorage.getItem("userSportsAnswers");
-    let combinedData;
-
-    if (userSportsAnswers) {
-      combinedData = {
-        ...JSON.parse(userSportsAnswers),
-        name: `${values.firstName} ${values.lastName}`,
-        email: values.emailAddress,
-        phoneNumber: values.phoneNumber,
-        aboutYou: values.aboutYou,
-      };
-    } else {
-      combinedData = {
-        name: `${values.firstName} ${values.lastName}`,
-        email: values.emailAddress,
-        phoneNumber: values.phoneNumber,
-        aboutYou: values.aboutYou,
-      };
+    setLoading(true);
+  
+    try {
+      const userSportsAnswers = localStorage.getItem("userSportsAnswers");
+      let combinedData;
+  
+      if (userSportsAnswers) {
+        combinedData = {
+          ...JSON.parse(userSportsAnswers),
+          firstName: values.firstName,    // Send firstName separately
+          lastName: values.lastName,      // Send lastName separately
+          emailAddress: values.emailAddress,
+          phoneNumber: values.phoneNumber,
+          aboutYou: values.aboutYou,
+        };
+      } else {
+        combinedData = {
+          firstName: values.firstName,    // Send firstName separately
+          lastName: values.lastName,      // Send lastName separately
+          emailAddress: values.emailAddress,
+          phoneNumber: values.phoneNumber,
+          aboutYou: values.aboutYou,
+        };
+      }
+  
+      const externalApiResponse = await fetch("/api/contact-send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(combinedData),
+      });
+  
+      const externalApiData = await externalApiResponse.json();
+      console.log("Message sent successfully", externalApiData);
+  
+      router.push("/completado");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+      setSent(true);
     }
-
-    const externalApiResponse = await fetch("/api/contact-send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(combinedData),
-    });
-
-    const externalApiData = await externalApiResponse.json();
-    console.log("Message sent successfully", externalApiData);
-
-    router.push("/completado");
-  } catch (error) {
-    console.error(error);
-  } finally {
-    setLoading(false);
-    setSent(true);
-  }
-};
+  };
+  
 
 
   return (
