@@ -6,42 +6,69 @@ type Faqs = {
 
 export const FaqsWebinar: Faqs[] = [
   {
-    title: "01 - Do you have specialized coaches in different sports?",
+    title: "01 - ¿Qué servicios de marketing ofrecemos?",
     content:
-      "Yes, at BestLevel, we have a broad team of coaches to cover the various sports disciplines in the best possible way.",
+      "Ofrecemos una variedad de servicios, incluyendo Desarrollo Web, Creación de Contenido, Manejo de Campañas y Asesoría de Marketing.",
     value: "question-1",
   },
   {
-    title:
-      "02 - What is the difference between training for athletes and conventional training?",
+    title: "02 - ¿Cómo pueden ayudarme a aumentar mis ventas?",
     content:
-      "Our focus on athlete training centers on developing specific skills to enhance sports performance, such as speed, power, and endurance, in addition to injury prevention and proper recovery. Furthermore, we prepare you for your competitions by taking into account your competition schedule. Unlike conventional training, we place a strong emphasis on the demands and requirements of your sport.",
+      "Utilizamos estrategias personalizadas basadas en los datos obtenidos de nuestra investigación de la competencia para atraer a tu público objetivo, mejorar la conversión y fidelizar a los clientes existentes.",
     value: "question-2",
   },
   {
-    title: "03 - How soon will I see results with BestLevel?",
+    title: "03 - ¿Cuál es nuestro proceso de trabajo?",
     content:
-      "It will depend on your expectations of what 'results' mean to you. But you will see improvements in your mobility, proprioception, coordination from the first week, and over time in your strength, explosiveness, and athleticism. It also depends on the level of commitment you have to the training.",
+      "Nuestro proceso incluye Investigación de la Competencia, planificación estratégica, implementación de campañas, monitoreo y optimización continua.",
     value: "question-3",
   },
   {
-    title:
-      "04 - How can I be sure that online training programs are effective in improving my sports performance?",
+    title: "04 - ¿Cuánto tiempo tomará ver resultados?",
     content:
-      "Our online training programs are based on proven scientific principles and designed by coaches with extensive experience in the field of sports performance. Additionally, we use tracking and evaluation methods to monitor your progress and adjust the program as needed, ensuring you are on the right path to achieve your sports goals.",
+      "El tiempo puede variar según el tipo de campaña y los objetivos, pero generalmente se pueden observar resultados en un periodo de 5-7 días.",
     value: "question-4",
   },
   {
-    title: "05 - How is progress evaluated during training?",
+    title:
+      "05 - ¿Qué información necesitamos de ustedes para poder empezar?",
     content:
-      "We conduct periodic assessments of our clients' progress using a variety of methods, such as physical performance tests, analysis of biometric data, and coach feedback. This allows us to adjust and customize training programs as needed to maximize results.",
+      "Necesitamos información sobre tus objetivos de negocio, tu público objetivo, tus competidores, y acceso a tus cuentas de redes sociales y sitio web.",
     value: "question-5",
   },
   {
     title:
-      "06 - Do they have specific programs for young athletes or teenagers?",
+      "06 - ¿Puedo cancelar los servicios en cualquier momento?",
     content:
-      "Yes, we offer specifically designed training programs for young athletes and teenagers, taking into account their level of physical development and unique training needs.",
+      "Sí, puedes cancelar los servicios, pero recomendamos cumplir con el período mínimo acordado para ver resultados significativos.",
     value: "question-6",
+  },
+  {
+    title:
+      "07 - ¿Cómo se mide el éxito de las campañas?",
+    content:
+      "Utilizamos métricas clave dependiendo de tus objetivos, como por ejemplo: ROAS, conversaciones iniciadas, conversiones, entre otras.",
+    value: "question-7",
+  },
+  {
+    title:
+      "08 - ¿Cómo garantizamos la calidad de nuestro trabajo?",
+    content:
+      "Contamos con una política que garantiza que, si después de 30 días desde la contratación de nuestros servicios se demuestra que se aplicaron los conceptos y las ventas de las campañas de publicidad en Facebook e Instagram no presentan incrementos, se devolverá el 100% del dinero.",
+    value: "question-8",
+  },
+  {
+    title:
+      "09 - ¿Cuál es el costo de los servicios?",
+    content:
+      "Los costos varían según el presupuesto invertido, generalmente entre un 5% y un 20%.",
+    value: "question-9",
+  },
+  {
+    title:
+      "10 - ¿Qué tipo de empresas han trabajado con nosotros?",
+    content:
+      "Hemos trabajado con una variedad de empresas, desde startups hasta grandes corporaciones, en sectores como retail, tecnología, salud, finanzas e incluso marcas personales.",
+    value: "question-10",
   },
 ];

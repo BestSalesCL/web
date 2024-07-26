@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Hero } from "@/components/webinar/hero/Hero";
 import { Reviews } from "@/components/webinar/videoReviews/Reviews";
-import { Faqs } from "@/components/webinar/faqs/Faqs";
+import { Faqs } from "@/components/homePage/faqs/Faqs";
 // import { InfoSection } from "@/components/webinar/info/InfoSection";
 import { ContactHero } from "@/components/contact/ContactHero";
 import { ContactForm } from "@/components/contact/ContactForm";
