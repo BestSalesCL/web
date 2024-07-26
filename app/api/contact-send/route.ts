@@ -41,18 +41,7 @@ export async function POST(req: NextRequest) {
     const fbEventData = {
       action_source: "website",
       event_id: eventId,
-      event_name: eventName,
-      event_time: eventTime,
-      user_data: {
-        em: [emailAddress],
-        ph: [phoneNumber],
-        client_ip_address: clientIpAddress,
-        client_user_agent: clientUserAgent,
-        fbc: fbc,
-        fbp: fbp,
-        fn: firstName,  // First Name
-        ln: lastName,   // Last Name
-      },
+      
     };
 
     const fbResponse = await fetch(
