@@ -60,7 +60,7 @@ const ContactForm = () => {
       };
     }
 
-    const externalApiResponse = await fetch("/api/facebook-complete-registration", {
+    const externalApiResponse = await fetch("/api/contact-send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
