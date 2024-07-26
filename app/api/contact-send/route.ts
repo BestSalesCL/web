@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     const fbEventData = {
       event_name: eventName,
       event_time: eventTime,
-      action_source: "pagina maquina",
+      action_source: "website",
       event_id: eventId,
       event_source_url: eventSourceUrl,
       user_data: {
