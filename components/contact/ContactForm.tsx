@@ -20,7 +20,7 @@ const pricingFormSchema = z.object({
 
 const ContactForm = () => {
   const { t } = useTranslation('common');
-  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
