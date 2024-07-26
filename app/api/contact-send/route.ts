@@ -50,8 +50,8 @@ export async function POST(req: NextRequest) {
         client_user_agent: clientUserAgent,
         fbc: fbc,
         fbp: fbp,
-        fn: firstName,
-        ln: lastName,
+        fn: firstName,  // First Name
+        ln: lastName,   // Last Name
       },
     };
 
