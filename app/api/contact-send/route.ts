@@ -38,23 +38,22 @@ export async function POST(req: NextRequest) {
       req.headers.get("x-forwarded-for")?.split(",")[0] ||
       req.headers.get("x-real-ip");
 
-    const fbEventData = 
-      {
-        action_source: "website",
-        event_id: eventId,
-        event_name: eventName,
-        event_time: eventTime,
-        user_data: {
-          em: [emailAddress],
-          ph: [phoneNumber],
-          client_ip_address: clientIpAddress,
-          client_user_agent: clientUserAgent,
-          fbc: fbc,
-          fbp: fbp,
-          fn: firstName,
-          ln: lastName,
-        },
-      };
+    const fbEventData = {
+      action_source: "website",
+      event_id: eventId,
+      event_name: eventName,
+      event_time: eventTime,
+      user_data: {
+        em: [emailAddress],
+        ph: [phoneNumber],
+        client_ip_address: clientIpAddress,
+        client_user_agent: clientUserAgent,
+        fbc: fbc,
+        fbp: fbp,
+        fn: firstName,
+        ln: lastName,
+      },
+    };
 
     const fbResponse = await fetch(
       `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
@@ -63,7 +62,7 @@ export async function POST(req: NextRequest) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify([fbEventData]), // Asegúrate de que el formato sea correcto aquí
+        body: JSON.stringify([fbEventData]), // Send the event data as an array
       }
     );
 
