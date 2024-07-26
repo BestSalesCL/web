@@ -44,8 +44,8 @@ export async function POST(req: NextRequest) {
       event_name: eventName,
       event_time: eventTime,
       user_data: {
-        em: emailAddress,
-        ph: phoneNumber,
+        em: [emailAddress],
+        ph: [phoneNumber],
         client_ip_address: clientIpAddress,
         client_user_agent: clientUserAgent,
         fbc: fbc,
