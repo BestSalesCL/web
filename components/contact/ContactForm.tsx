@@ -37,49 +37,50 @@ const ContactForm = () => {
   });
 
   const handleSubmit = async (values: z.infer<typeof pricingFormSchema>) => {
-  setLoading(true);
+    setLoading(true);
 
-  try {
-    const userSportsAnswers = localStorage.getItem("userSportsAnswers");
-    let combinedData;
+    try {
+      const userSportsAnswers = localStorage.getItem("userSportsAnswers");
+      let combinedData;
 
-    if (userSportsAnswers) {
-      combinedData = {
-        ...JSON.parse(userSportsAnswers),
-        name: `${values.firstName} ${values.lastName}`,
-        email: values.emailAddress,
-        phoneNumber: values.phoneNumber,
-        aboutYou: values.aboutYou,
-      };
-    } else {
-      combinedData = {
-        name: `${values.firstName} ${values.lastName}`,
-        email: values.emailAddress,
-        phoneNumber: values.phoneNumber,
-        aboutYou: values.aboutYou,
-      };
+      if (userSportsAnswers) {
+        combinedData = {
+          ...JSON.parse(userSportsAnswers),
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.emailAddress,
+          phoneNumber: values.phoneNumber,
+          aboutYou: values.aboutYou,
+        };
+      } else {
+        combinedData = {
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.emailAddress,
+          phoneNumber: values.phoneNumber,
+          aboutYou: values.aboutYou,
+        };
+      }
+
+      const externalApiResponse = await fetch("/api/contact-send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(combinedData),
+      });
+
+      const externalApiData = await externalApiResponse.json();
+      console.log("Message sent successfully", externalApiData);
+
+      router.push("/completado");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+      setSent(true);
     }
-
-    const externalApiResponse = await fetch("/api/contact-send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(combinedData),
-    });
-
-    const externalApiData = await externalApiResponse.json();
-    console.log("Message sent successfully", externalApiData);
-
-    router.push("/completado");
-  } catch (error) {
-    console.error(error);
-  } finally {
-    setLoading(false);
-    setSent(true);
-  }
-};
-
+  };
 
   return (
     <section className="flex-center-col w-full gap-[60px] bg-background_color px-6 pb-[64px] pt-8 sm:px-[40px] md:px-[100px] md:pb-[96px]">
@@ -187,25 +188,18 @@ const ContactForm = () => {
                     fill="currentColor"
                   />
                   <path
-                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.634 70.6331 15.5151C75.2735 18.3962 79.3327 22.2342 82.5849 26.796C84.9175 30.0724 86.7992 33.686 88.1714 37.5307C89.0836 39.9023 91.5422 40.9454 93.9676 39.0409Z"
                     fill="currentFill"
                   />
                 </svg>
+                <span className="sr-only">Loading...</span>
               </div>
             )}
           </Button>
-
-          {sent && (
-            <div className="flex-start w-full">
-              <p className="text-20-semibold text-text_color">
-                {t('Su formulario ha sido enviado exitosamente! Nos contactaremos lo antes posible')}
-              </p>
-            </div>
-          )}
         </form>
       </Form>
     </section>
   );
 };
 
-export { ContactForm };
+export default ContactForm;
