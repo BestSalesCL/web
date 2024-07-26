@@ -38,22 +38,24 @@ export async function POST(req: NextRequest) {
       req.headers.get("x-forwarded-for")?.split(",")[0] ||
       req.headers.get("x-real-ip");
 
-    const fbEventData = {
-      action_source: "website",
-      event_id: eventId,
-      event_name: eventName,
-      event_time: eventTime,
-      user_data: {
-        em: [emailAddress],
-        ph: [phoneNumber],
-        client_ip_address: clientIpAddress,
-        client_user_agent: clientUserAgent,
-        fbc: fbc,
-        fbp: fbp,
-        fn: firstName,
-        ln: lastName,
+    const fbEventData = [
+      {
+        action_source: "website",
+        event_id: eventId,
+        event_name: eventName,
+        event_time: eventTime,
+        user_data: {
+          em: [emailAddress],
+          ph: [phoneNumber],
+          client_ip_address: clientIpAddress,
+          client_user_agent: clientUserAgent,
+          fbc: fbc,
+          fbp: fbp,
+          fn: firstName,
+          ln: lastName,
+        },
       },
-    };
+    ];
 
     const fbResponse = await fetch(
       `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
@@ -62,22 +64,11 @@ export async function POST(req: NextRequest) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify([fbEventData]), // Send as an array
+        body: JSON.stringify(fbEventData), // Asegúrate de que el formato sea correcto aquí
       }
     );
 
-    const fbResponseText = await fbResponse.text();
-    let fbResponseData;
-
-    try {
-      fbResponseData = JSON.parse(fbResponseText);
-    } catch (jsonError) {
-      console.error("Failed to parse Facebook response as JSON:", jsonError);
-      return NextResponse.json(
-        { error: "Error parsing Facebook response", details: fbResponseText },
-        { status: 500 }
-      );
-    }
+    const fbResponseData = await fbResponse.json();
 
     if (!fbResponse.ok) {
       console.error("Error response from Facebook:", fbResponseData);
@@ -89,44 +80,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, emailResponseData, fbResponseData }, { status: 200 });
   } catch (error) {
-    const errorMessage = (error instanceof Error) ? error.message : "Unknown error";
-    console.error("Error sending message or event to Facebook:", errorMessage);
-
-    const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID; // Define pixelId here
-    const accessToken = process.env.FACEBOOK_ACCESS_TOKEN; // Define accessToken here
-
-    if (!pixelId || !accessToken) {
-      return NextResponse.json(
-        { error: "Facebook Pixel ID or Access Token is missing" },
-        { status: 500 }
-      );
-    }
-
-    let details = "An unknown error occurred";
-    try {
-      const response = await fetch(
-        `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify([{
-            action_source: "website",
-            event_id: crypto.randomUUID(),
-            event_name: "Error",
-            event_time: Math.floor(Date.now() / 1000),
-            user_data: {}
-          }]),
-        }
-      );
-      details = await response.text();
-    } catch (fetchError) {
-      console.error("Error fetching Facebook response:", fetchError);
-    }
-
+    console.error("Error sending message or event to Facebook:", error);
     return NextResponse.json(
-      { error: "Error sending message or event to Facebook", details: details },
+      { error: "Error sending message or event to Facebook", details: (error as Error).message },
       { status: 500 }
     );
   }
