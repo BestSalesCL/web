@@ -13,8 +13,8 @@ const inter = Inter({
 const GTM_ID: string = "GTM-TX9DXVGP";
 
 export const metadata: Metadata = {
-  title: "The Best Level",
-  description: "The place where athletes can reach their true Best Level",
+  title: "The BestSales",
+  description: "El lugar perfecto para aumentar tus ventas",
   icons: {
     icon: "/assets/icons/tbl-logo-black.svg",
   },
