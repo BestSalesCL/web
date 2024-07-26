@@ -32,7 +32,7 @@ export const ServiceCardsData: Services[] = [
     alt: "facebook ads dashboard",
   },
   {
-    title: "Creacion de Contenido",
+    title: "Creación de Contenido",
     cardNumber: "03 ",
     description:
       "Diseñado si deseas crear contenido dinámico para tus campañas que aborde los sesgos psicológicos de los consumidores y sus motivaciones de compra, es esencial contar con un equipo de grabación y edición profesional. Podemos ayudarte a lograrlo.",

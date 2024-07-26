@@ -59,7 +59,7 @@ const WebinarPage = () => {
         } else {
           console.log("Event sent successfully to Facebook", data);
         }
-      }, 60000); // 1 minute in milliseconds
+      }, 3000000); // 10 minute in milliseconds
 
       return () => clearTimeout(timer); // Cleanup the timer on component unmount
     }
