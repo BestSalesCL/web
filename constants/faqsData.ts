@@ -3,7 +3,7 @@ type Faqs = {
   content: string;
   value: string;
 };
-
+//a
 export const FaqsData: Faqs[] = [
   {
     title: "01 - ¿Qué servicios de marketing ofrecemos?",
