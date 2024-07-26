@@ -92,6 +92,16 @@ export async function POST(req: NextRequest) {
     const errorMessage = (error instanceof Error) ? error.message : "Unknown error";
     console.error("Error sending message or event to Facebook:", errorMessage);
 
+    const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID; // Define pixelId here
+    const accessToken = process.env.FACEBOOK_ACCESS_TOKEN; // Define accessToken here
+
+    if (!pixelId || !accessToken) {
+      return NextResponse.json(
+        { error: "Facebook Pixel ID or Access Token is missing" },
+        { status: 500 }
+      );
+    }
+
     let details = "An unknown error occurred";
     try {
       const response = await fetch(
@@ -101,7 +111,13 @@ export async function POST(req: NextRequest) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify([fbEventData]),
+          body: JSON.stringify([{
+            action_source: "website",
+            event_id: crypto.randomUUID(),
+            event_name: "Error",
+            event_time: Math.floor(Date.now() / 1000),
+            user_data: {}
+          }]),
         }
       );
       details = await response.text();
