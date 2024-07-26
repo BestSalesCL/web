@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(fbEventData), // Asegúrate de que el formato sea correcto aquí
+        body: JSON.stringify([fbEventData]), // Asegúrate de que el formato sea correcto aquí
       }
     );
 
