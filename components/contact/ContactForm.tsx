@@ -1,243 +1,81 @@
-"use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input, Textarea } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useTranslation } from "next-i18next";
+import React, { useState } from 'react';
 
-const pricingFormSchema = z.object({
-  firstName: z.string().min(1, "Please enter your name"),
-  lastName: z.string().min(1, "Please enter your name"),
-  emailAddress: z.string().email(),
-  phoneNumber: z.string().min(8, "Please enter a valid phone number"),
-  newField: z.string().min(1, "Please enter a value for the new field"), // Nuevo campo
-  aboutYou: z.string().min(1, "Please tell us a bit about yourself"),
-});
+const ContactForm: React.FC = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
-const ContactForm = () => {
-  const { t } = useTranslation('common');
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const [sent, setSent] = useState(false);
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
 
-  const form = useForm<z.infer<typeof pricingFormSchema>>({
-    resolver: zodResolver(pricingFormSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      emailAddress: "",
-      phoneNumber: "",
-      newField: "", // Valor por defecto para el nuevo campo
-      aboutYou: "",
-    },
-  });
+    setIsLoading(true);
+    setError(null);
+    setSuccess(null);
 
-  const handleSubmit = async (values: z.infer<typeof pricingFormSchema>) => {
-    setLoading(true);
-    
     try {
-      const userSportsAnswers = localStorage.getItem("userSportsAnswers");
-      let combinedData;
-  
-      if (userSportsAnswers) {
-        combinedData = {
-          ...JSON.parse(userSportsAnswers),
-          firstName: values.firstName,
-          lastName: values.lastName,
-          emailAddress: values.emailAddress,
-          phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
-        };
-      } else {
-        combinedData = {
-          firstName: values.firstName,
-          lastName: values.lastName,
-          emailAddress: values.emailAddress,
-          phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
-        };
-      }
-  
-      const eventName = "CompleteRegistration";
-      const eventTime = Math.floor(Date.now() / 1000);
-      const clientUserAgent = navigator.userAgent || "";
-      const fbc = ""; // Set if applicable
-      const fbp = ""; // Set if applicable
-      const eventId: string = crypto.randomUUID();
-      const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
-      const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
-  
-      if (!pixelId || !accessToken) {
-        throw new Error("Facebook Pixel ID or Access Token is missing");
-      }
-  
-      const clientIpAddress = ""; // You might need to use a server-side function to get the IP
-  
-      const fbEventData = {
-        event_name: eventName,
-        event_time: eventTime,
-        action_source: "website",
-        event_id: eventId,
-        user_data: {
-          em: [values.emailAddress],
-          ph: [values.phoneNumber],
-          client_ip_address: clientIpAddress,
-          client_user_agent: clientUserAgent,
-          fbc: fbc,
-          fbp: fbp,
-          fn: values.firstName,
-          ln: values.lastName,
+      const response = await fetch('/api/contact-send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      };
-  
-      const fbResponse = await fetch(
-        `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify([fbEventData]), // Send the event data as an array
-        }
-      );
-  
-      const fbResponseData = await fbResponse.json();
-  
-      if (!fbResponse.ok) {
-        console.error("Error response from Facebook:", fbResponseData);
-        throw new Error("Error sending event to Facebook");
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Something went wrong');
       }
-  
-      console.log("Event sent to Facebook successfully", fbResponseData);
-      router.push("/completado");
-  
+
+      setSuccess('Message sent successfully!');
+      setName('');
+      setEmail('');
+      setMessage('');
     } catch (error) {
-      console.error("Error sending event to Facebook:", error);
+      setError('Failed to send message.');
     } finally {
-      setLoading(false);
-      setSent(true);
+      setIsLoading(false);
     }
   };
-  
 
   return (
-    <section className="flex-center-col w-full gap-[60px] bg-background_color px-6 pb-[64px] pt-8 sm:px-[40px] md:px-[100px] md:pb-[96px]">
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex-start-col h-fit w-full max-w-[600px] gap-5"
-        >
-          <div className="flex-start-col h-fit w-full gap-3">
-            <FormField
-              control={form.control}
-              name="firstName"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormLabel className="text-text_color">{t('Nombre')}</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder={t('Ingresa tu nombre')} type="text" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="lastName"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormLabel className="text-text_color">{t('Apellido')}</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder={t('Ingresa tu apellido')} type="text" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="emailAddress"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormLabel className="text-text_color">{t('Email')}</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder={t('Ingresa tu email de contacto')} type="email" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="phoneNumber"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormLabel className="text-text_color">{t('Número de contacto')}</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder={t('Ingresa tu número telefónico')} type="tel" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="newField"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormLabel className="text-text_color">{t('Cuánto es tu presupuesto mensual para invertir')}</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder={t('Ingresa tu presupuesto mensual')} type="text" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="aboutYou"
-              render={({ field }) => (
-                <FormItem className="w-full">
-                  <FormLabel className="text-text_color">{t('Cuéntanos un poco de ti')}</FormLabel>
-                  <FormControl>
-                    <Textarea {...field} placeholder={t('Escribe sobre tu negocio')} className="h-[150px]" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          <Button type="submit" className="group transition-all duration-500 ease-out hover:bg-text_color">
-            {!loading && (
-              <p className="transition-all duration-500 ease-out group-hover:text-background_color">{t('Enviar')}</p>
-            )}
-            {loading && (
-              <div role="status">
-                <svg
-                  aria-hidden="true"
-                  className="size-8 animate-spin fill-primary_color text-text_400"
-                  viewBox="0 0 100 101"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-
-                    <path
-                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 72.4257 27.963 91.3073 50 91.3073C72.037 91.3073 90.9186 72.4257 90.9186 50.5908C90.9186 28.7558 72.037 9.87421 50 9.87421C27.963 9.87421 9.08144 28.7558 9.08144 50.5908Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span className="sr-only">Loading...</span>
-              </div>
-            )}
-          </Button>
-        </form>
-      </Form>
-    </section>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="message">Message</label>
+        <textarea
+          id="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
+        />
+      </div>
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? 'Sending...' : 'Send Message'}
+      </button>
+      {error && <p>{error}</p>}
+      {success && <p>{success}</p>}
+    </form>
   );
 };
 
