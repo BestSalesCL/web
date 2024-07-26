@@ -14,7 +14,7 @@ const pricingFormSchema = z.object({
   lastName: z.string().min(1, "Please enter your name"),
   emailAddress: z.string().email(),
   phoneNumber: z.string().min(8, "Please enter a valid phone number"),
-  newField: z.string().min(1, "Please enter a value for the new field"),
+  newField: z.string().min(1, "Please enter a value for the new field"), // Nuevo campo
   aboutYou: z.string().min(1, "Please tell us a bit about yourself"),
 });
 
@@ -31,59 +31,55 @@ const ContactForm = () => {
       lastName: "",
       emailAddress: "",
       phoneNumber: "",
-      newField: "",
+      newField: "", // Valor por defecto para el nuevo campo
       aboutYou: "",
     },
   });
 
   const handleSubmit = async (values: z.infer<typeof pricingFormSchema>) => {
-    setLoading(true);
-    setSent(false); // Reset sent state
+  setLoading(true);
 
-    try {
-      const userSportsAnswers = localStorage.getItem("userSportsAnswers");
-      let combinedData;
+  try {
+    const userSportsAnswers = localStorage.getItem("userSportsAnswers");
+    let combinedData;
 
-      if (userSportsAnswers) {
-        combinedData = {
-          ...JSON.parse(userSportsAnswers),
-          name: `${values.firstName} ${values.lastName}`,
-          email: values.emailAddress,
-          phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
-        };
-      } else {
-        combinedData = {
-          name: `${values.firstName} ${values.lastName}`,
-          email: values.emailAddress,
-          phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
-        };
-      }
-
-      const externalApiResponse = await fetch("/api/contact-send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(combinedData),
-      });
-
-      if (!externalApiResponse.ok) {
-        throw new Error("Failed to send message");
-      }
-
-      const externalApiData = await externalApiResponse.json();
-      console.log("Message sent successfully", externalApiData);
-
-      router.push("/completado"); // Redirect on success
-    } catch (error) {
-      console.error("Error sending message:", error);
-    } finally {
-      setLoading(false);
-      setSent(true); // Update sent state
+    if (userSportsAnswers) {
+      combinedData = {
+        ...JSON.parse(userSportsAnswers),
+        name: `${values.firstName} ${values.lastName}`,
+        email: values.emailAddress,
+        phoneNumber: values.phoneNumber,
+        aboutYou: values.aboutYou,
+      };
+    } else {
+      combinedData = {
+        name: `${values.firstName} ${values.lastName}`,
+        email: values.emailAddress,
+        phoneNumber: values.phoneNumber,
+        aboutYou: values.aboutYou,
+      };
     }
-  };
+
+    const externalApiResponse = await fetch("/api/contact-send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(combinedData),
+    });
+
+    const externalApiData = await externalApiResponse.json();
+    console.log("Message sent successfully", externalApiData);
+
+    router.push("/completado");
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setLoading(false);
+    setSent(true);
+  }
+};
+
 
   return (
     <section className="flex-center-col w-full gap-[60px] bg-background_color px-6 pb-[64px] pt-8 sm:px-[40px] md:px-[100px] md:pb-[96px]">
