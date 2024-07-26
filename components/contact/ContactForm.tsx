@@ -31,7 +31,7 @@ const ContactForm = () => {
       lastName: "",
       emailAddress: "",
       phoneNumber: "",
-      newField: "", // Valor por defecto para el nuevo campo
+      newField: "", // Valor por defecto para el nuevo campo1
       aboutYou: "",
     },
   });
