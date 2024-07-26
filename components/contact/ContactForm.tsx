@@ -31,65 +31,46 @@ const ContactForm = () => {
       lastName: "",
       emailAddress: "",
       phoneNumber: "",
-      newField: "", // Valor por defecto para el nuevo campo1
+      newField: "", // Valor por defecto para el nuevo campo
       aboutYou: "",
     },
   });
 
   const handleSubmit = async (values: z.infer<typeof pricingFormSchema>) => {
     setLoading(true);
-  
+
     try {
-      const userSportsAnswers = localStorage.getItem("userSportsAnswers");
-      let combinedData;
-  
-      if (userSportsAnswers) {
-        combinedData = {
-          ...JSON.parse(userSportsAnswers),
-          firstName: values.firstName,
-          lastName: values.lastName,
-          emailAddress: values.emailAddress,
-          phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
-        };
-      } else {
-        combinedData = {
-          firstName: values.firstName,
-          lastName: values.lastName,
-          emailAddress: values.emailAddress,
-          phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
-        };
-      }
-  
-      // Send data to your external API
-      const externalApiResponse = await fetch("/api/contact-send", {
+      // Prepare data for external API and Facebook
+      const combinedData = {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        emailAddress: values.emailAddress,
+        phoneNumber: values.phoneNumber,
+        aboutYou: values.aboutYou,
+      };
+
+      // Send data to external API
+      const externalApiResponse = await fetch("/api/external-api-endpoint", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(combinedData),
       });
-  
+
       const externalApiData = await externalApiResponse.json();
-      console.log("Message sent successfully", externalApiData);
-  
-      // Send data to Facebook
+
+      // Facebook event data
       const eventName = "CompleteRegistration";
       const eventTime = Math.floor(Date.now() / 1000);
       const clientUserAgent = navigator.userAgent;
-      const fbc = document.cookie.match(/_fbc=([^;]*)/)?.[1] || "";
-      const fbp = document.cookie.match(/_fbp=([^;]*)/)?.[1] || "";
+      const fbc = document.cookie.split("; ").find(row => row.startsWith("_fbc="))?.split("=")[1] || "";
+      const fbp = document.cookie.split("; ").find(row => row.startsWith("_fbp="))?.split("=")[1] || "";
       const eventId = crypto.randomUUID();
       const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
       const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
-  
-      if (!pixelId || !accessToken) {
-        throw new Error("Facebook Pixel ID or Access Token is missing");
-      }
-  
-      const clientIpAddress = ""; // Get IP address from server-side or another method
-  
+      const clientIpAddress = "";
+
       const fbEventData = {
         event_name: eventName,
         event_time: eventTime,
@@ -106,7 +87,8 @@ const ContactForm = () => {
           ln: values.lastName,
         },
       };
-  
+
+      // Send data to Facebook
       const fbResponse = await fetch(
         `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
         {
@@ -117,26 +99,24 @@ const ContactForm = () => {
           body: JSON.stringify([fbEventData]), // Send the event data as an array
         }
       );
-  
+
       const fbResponseData = await fbResponse.json();
-  
+
       if (!fbResponse.ok) {
         console.error("Error response from Facebook:", fbResponseData);
         throw new Error("Error sending event to Facebook");
       }
-  
+
+      console.log("Message sent successfully", externalApiData);
+
       router.push("/completado");
     } catch (error) {
-      console.error(error);
+      console.error("Error sending message or event to Facebook:", error);
     } finally {
       setLoading(false);
       setSent(true);
     }
   };
-  
-
-  
-
 
   return (
     <section className="flex-center-col w-full gap-[60px] bg-background_color px-6 pb-[64px] pt-8 sm:px-[40px] md:px-[100px] md:pb-[96px]">
@@ -239,30 +219,20 @@ const ContactForm = () => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+
+                    <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 72.4257 27.963 91.3073 50 91.3073C72.037 91.3073 90.9186 72.4257 90.9186 50.5908C90.9186 28.7558 72.037 9.87421 50 9.87421C27.963 9.87421 9.08144 28.7558 9.08144 50.5908Z"
                     fill="currentColor"
                   />
-                  <path
-                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                    fill="currentFill"
-                  />
                 </svg>
+                <span className="sr-only">Loading...</span>
               </div>
             )}
           </Button>
-
-          {sent && (
-            <div className="flex-start w-full">
-              <p className="text-20-semibold text-text_color">
-                {t('Su formulario ha sido enviado exitosamente! Nos contactaremos lo antes posible')}
-              </p>
-            </div>
-          )}
         </form>
       </Form>
     </section>
   );
 };
 
-export { ContactForm };
+export default ContactForm;
