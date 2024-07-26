@@ -37,49 +37,49 @@ const ContactForm = () => {
   });
 
   const handleSubmit = async (values: z.infer<typeof pricingFormSchema>) => {
-    setLoading(true);
-  
-    try {
-      const userSportsAnswers = localStorage.getItem("userSportsAnswers");
-      let combinedData;
-  
-      if (userSportsAnswers) {
-        combinedData = {
-          ...JSON.parse(userSportsAnswers),
-          name: `${values.firstName} ${values.lastName}`,
-          email: values.emailAddress,
-          phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
-        };
-      } else {
-        combinedData = {
-          name: `${values.firstName} ${values.lastName}`,
-          email: values.emailAddress,
-          phoneNumber: values.phoneNumber,
-          aboutYou: values.aboutYou,
-        };
-      }
-  
-      const externalApiResponse = await fetch("/api/contact-send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(combinedData),
-      });
-  
-      const externalApiData = await externalApiResponse.json();
-      console.log("Message sent successfully", externalApiData);
-  
-      router.push("/completado");
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-      setSent(true);
+  setLoading(true);
+
+  try {
+    const userSportsAnswers = localStorage.getItem("userSportsAnswers");
+    let combinedData;
+
+    if (userSportsAnswers) {
+      combinedData = {
+        ...JSON.parse(userSportsAnswers),
+        name: `${values.firstName} ${values.lastName}`,
+        email: values.emailAddress,
+        phoneNumber: values.phoneNumber,
+        aboutYou: values.aboutYou,
+      };
+    } else {
+      combinedData = {
+        name: `${values.firstName} ${values.lastName}`,
+        email: values.emailAddress,
+        phoneNumber: values.phoneNumber,
+        aboutYou: values.aboutYou,
+      };
     }
-  };
-  
+
+    const externalApiResponse = await fetch("/api/facebook-complete-registration", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(combinedData),
+    });
+
+    const externalApiData = await externalApiResponse.json();
+    console.log("Message sent successfully", externalApiData);
+
+    router.push("/completado");
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setLoading(false);
+    setSent(true);
+  }
+};
+
 
   return (
     <section className="flex-center-col w-full gap-[60px] bg-background_color px-6 pb-[64px] pt-8 sm:px-[40px] md:px-[100px] md:pb-[96px]">
