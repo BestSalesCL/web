@@ -20,12 +20,7 @@ export async function POST(req: NextRequest) {
     const emailResponseData = await externalResponse.json();
 
     // Data to send to Facebook
-    const { firstName, lastName, emailAddress, phoneNumber } = formData;
-    const eventName = "CompleteRegistration";
-    const eventTime = Math.floor(Date.now() / 1000);
-    const clientUserAgent = req.headers.get("user-agent") || "";
-    const fbc = req.cookies.get("_fbc")?.value || "";
-    const fbp = req.cookies.get("_fbp")?.value || "";
+
     const eventId: string = crypto.randomUUID();
     const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
     const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
