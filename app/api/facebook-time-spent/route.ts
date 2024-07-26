@@ -1,21 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import crypto from "crypto";
+
 
 export async function POST(req: NextRequest) {
   try {
-    const {
-      eventName,
-      eventTime,
-      clientUserAgent,
-      eventSourceUrl,
-      customData,
-      fbc,
-      fbp,
-    } = await req.json();
+    
 
     const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
     const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
-    const eventId: string = crypto.randomUUID();
+    
 
     if (!pixelId || !accessToken) {
       throw new Error("Facebook Pixel ID or Access Token is missing");
