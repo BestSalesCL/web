@@ -46,23 +46,23 @@ const ContactForm = () => {
       if (userSportsAnswers) {
         combinedData = {
           ...JSON.parse(userSportsAnswers),
-          firstName: values.firstName,
-          lastName: values.lastName,
+          firstName: values.firstName,    // Send firstName separately
+          lastName: values.lastName,      // Send lastName separately
           emailAddress: values.emailAddress,
           phoneNumber: values.phoneNumber,
           aboutYou: values.aboutYou,
         };
       } else {
         combinedData = {
-          firstName: values.firstName,
-          lastName: values.lastName,
+          firstName: values.firstName,    // Send firstName separately
+          lastName: values.lastName,      // Send lastName separately
           emailAddress: values.emailAddress,
           phoneNumber: values.phoneNumber,
           aboutYou: values.aboutYou,
         };
       }
   
-      const response = await fetch("/api/contact-send", {
+      const externalApiResponse = await fetch("/api/contact-send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,8 +70,8 @@ const ContactForm = () => {
         body: JSON.stringify(combinedData),
       });
   
-      const responseData = await response.json();
-      console.log("Message sent successfully", responseData);
+      const externalApiData = await externalApiResponse.json();
+      console.log("Message sent successfully", externalApiData);
   
       router.push("/completado");
     } catch (error) {
@@ -81,7 +81,6 @@ const ContactForm = () => {
       setSent(true);
     }
   };
-  
   
 
 

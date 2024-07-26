@@ -4,7 +4,6 @@ import crypto from "crypto";
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.json();
-    console.log("Received form data:", formData);
 
     // Send the data to your external API
     const externalResponse = await fetch(
@@ -19,9 +18,8 @@ export async function POST(req: NextRequest) {
     );
 
     const emailResponseData = await externalResponse.json();
-    console.log("Email API response:", emailResponseData);
 
-    // Prepare data for Facebook
+    // Data to send to Facebook
     const { firstName, lastName, emailAddress, phoneNumber } = formData;
     const eventName = "CompleteRegistration";
     const eventTime = Math.floor(Date.now() / 1000);
@@ -52,12 +50,10 @@ export async function POST(req: NextRequest) {
         client_user_agent: clientUserAgent,
         fbc: fbc,
         fbp: fbp,
-        fn: firstName,
-        ln: lastName,
+        fn: firstName,  // First Name
+        ln: lastName,   // Last Name
       },
     };
-
-    console.log("Sending event to Facebook:", fbEventData);
 
     const fbResponse = await fetch(
       `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
@@ -66,7 +62,7 @@ export async function POST(req: NextRequest) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify([fbEventData]),
+        body: JSON.stringify([fbEventData]), // Send the event data as an array
       }
     );
 
