@@ -24,7 +24,6 @@ export async function POST(req: NextRequest) {
     const eventName = "CompleteRegistration";
     const eventTime = Math.floor(Date.now() / 1000);
     const clientUserAgent = req.headers.get("user-agent") || "";
-    const eventSourceUrl = req.headers.get("referer") || "";
     const fbc = req.cookies.get("_fbc")?.value || "";
     const fbp = req.cookies.get("_fbp")?.value || "";
     const eventId: string = crypto.randomUUID();
