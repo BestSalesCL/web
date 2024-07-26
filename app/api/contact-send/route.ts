@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
       req.headers.get("x-forwarded-for")?.split(",")[0] ||
       req.headers.get("x-real-ip");
 
-    const fbEventData = [
+    const fbEventData = 
       {
         action_source: "website",
         event_id: eventId,
@@ -54,8 +54,7 @@ export async function POST(req: NextRequest) {
           fn: firstName,
           ln: lastName,
         },
-      },
-    ];
+      };
 
     const fbResponse = await fetch(
       `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,

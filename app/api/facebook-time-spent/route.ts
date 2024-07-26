@@ -1,13 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
-
+import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
   try {
-    
+    const {
+      eventName,
+      eventTime,
+      clientUserAgent,
+      eventSourceUrl,
+      customData,
+      fbc,
+      fbp,
+    } = await req.json();
 
     const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
     const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
-    
+    const eventId: string = crypto.randomUUID();
 
     if (!pixelId || !accessToken) {
       throw new Error("Facebook Pixel ID or Access Token is missing");
@@ -18,7 +26,20 @@ export async function POST(req: NextRequest) {
       req.headers.get("x-forwarded-for")?.split(",")[0] ||
       req.headers.get("x-real-ip");
 
-    const data = [{"action_source":"website","event_id":12345,"event_name":"TestEvent","event_time":1721991368,"user_data":{"client_ip_address":"254.254.254.254","client_user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0","em":"f660ab912ec121d1b1e928a0bb4bc61b15f5ad44d5efdc4e1c92a25e99b8e44a"}}];
+    const data = {
+      event_name: eventName,
+      event_time: eventTime,
+      action_source: "website",
+      event_id: eventId,
+      event_source_url: eventSourceUrl,
+      user_data: {
+        client_ip_address: clientIpAddress,
+        client_user_agent: clientUserAgent,
+        fbc: fbc || "",
+        fbp: fbp || "",
+      },
+      custom_data: customData,
+    };
 
     const response = await fetch(
       `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
