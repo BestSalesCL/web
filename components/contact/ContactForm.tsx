@@ -73,7 +73,7 @@ const ContactForm = () => {
       const externalApiData = await externalApiResponse.json();
       console.log("Message sent successfully", externalApiData);
   
-      router.replace("/completado");
+      window.location.href = "/completado";
     } catch (error) {
       console.error(error);
     } finally {
