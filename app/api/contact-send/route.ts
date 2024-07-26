@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
     if (!fbResponse.ok) {
       console.error("Error response from Facebook:", fbResponseData);
       return NextResponse.json(
-        { error: "Error sending event to Facebook" },
+        { error: "Error sending event to Facebook", details: fbResponseData },
         { status: 500 }
       );
     }
@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error sending message or event to Facebook:", error);
     return NextResponse.json(
-      { error: "Error sending message or event to Facebook" },
+      { error: "Error sending message or event to Facebook", details: error.message },
       { status: 500 }
     );
   }
