@@ -62,11 +62,22 @@ export async function POST(req: NextRequest) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ data: [fbEventData] }),
+        body: JSON.stringify([fbEventData]), // Send as an array
       }
     );
 
-    const fbResponseData = await fbResponse.json();
+    const fbResponseText = await fbResponse.text();
+    let fbResponseData;
+
+    try {
+      fbResponseData = JSON.parse(fbResponseText);
+    } catch (jsonError) {
+      console.error("Failed to parse Facebook response as JSON:", jsonError);
+      return NextResponse.json(
+        { error: "Error parsing Facebook response", details: fbResponseText },
+        { status: 500 }
+      );
+    }
 
     if (!fbResponse.ok) {
       console.error("Error response from Facebook:", fbResponseData);
@@ -78,11 +89,28 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, emailResponseData, fbResponseData }, { status: 200 });
   } catch (error) {
-    // Type guard to check if error is an instance of Error
     const errorMessage = (error instanceof Error) ? error.message : "Unknown error";
     console.error("Error sending message or event to Facebook:", errorMessage);
+
+    let details = "An unknown error occurred";
+    try {
+      const response = await fetch(
+        `https://graph.facebook.com/v20.0/${pixelId}/events?access_token=${accessToken}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify([fbEventData]),
+        }
+      );
+      details = await response.text();
+    } catch (fetchError) {
+      console.error("Error fetching Facebook response:", fetchError);
+    }
+
     return NextResponse.json(
-      { error: "Error sending message or event to Facebook", details: errorMessage },
+      { error: "Error sending message or event to Facebook", details: details },
       { status: 500 }
     );
   }
