@@ -133,9 +133,20 @@ export default function TermsAndConditions() {
             <li>Pérdida de Beneficios: Cualquier pérdida de ingresos o ganancias esperadas.</li>
             <li>Pérdida de Datos: Pérdida de información o datos importantes.</li>
             <li>Pérdida de Uso: La incapacidad de usar o acceder a los servicios de la manera esperada.</li>
-            <li>Pérdida de Oportunidades: La pérdida de oportunidades de negocio o ganancias.</li>
-            <li>Interrupciones en el Servicio: Problemas técnicos que afectan la disponibilidad del servicio.</li>
+            <li>Pérdida de Buena Voluntad: Pérdida de confianza o reputación.</li>
           </ul>
+          <p className="text-16 text-text_400">
+            Estos daños pueden surgir de:
+          </p>
+          <ul className="list-disc ml-6">
+            <li>Acceso o Uso de los Servicios: Problemas al acceder a los servicios o incapacidad para usarlos.</li>
+            <li>Conducta o Contenido de Terceros: Actos de terceros que se manifiestan en los servicios.</li>
+            <li>Contenido Obtenido a través de los Servicios: Información o material recibido mediante el uso de los servicios.</li>
+            <li>Acceso No Autorizado: Acceso, uso o alteración no permitida de tus datos o contenido.</li>
+          </ul>
+          <p className="text-16 text-text_400">
+            Esto es aplicable independientemente de si se basa en garantías, contratos, agravios (incluida la negligencia) o cualquier otra teoría legal, incluso si hemos sido informados sobre la posibilidad de tales daños.
+          </p>
 
           <h2 className="subtitle text-text_color">Modificaciones</h2>
           <p className="text-16 text-text_400">
