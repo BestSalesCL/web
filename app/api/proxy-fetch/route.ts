@@ -7,7 +7,10 @@ export async function GET(request: NextRequest) {
     "ad2-9FXlvHd8sIFoIko3FcXtXYFzVtmBFP.mp4",
     "ad3-ohHIb4DSImxt4iRVCdLaoKuETKXZSD.mp4",
     "ad4-XQ7YcFvayB3tqRQI9fipDOZhlOtibM.mp4",
-    "ad1-cZaWyXFhv5WPBAJCL4cxH2kj5ejBrz.mp4"  // Añadimos un cuarto video
+    "ad1-cZaWyXFhv5WPBAJCL4cxH2kj5ejBrz.mp4",
+    "ad5-BHuwbQN0O73b38Qni1PEKiWYOIKVlx.mp4",
+    "ad6-5xACek1OvcUAmKZGT86HeeycG9ztzP.mp4",
+    "ad7-zMsgEyX7OKgcOSbfspTwvofvkz927I.mp4"  // Añadimos un cuarto video
   ];
 
   try {
