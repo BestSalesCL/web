@@ -64,7 +64,7 @@ const AthleteReviews = () => {
           className="flex-center-col w-full gap-3 md:gap-8"
         >
           <p className="subtitle md:h2-big max-w-[410px] text-center text-text_color">
-            ¿Que esperas para unirte?
+            ¿Qué esperas para unirte?
           </p>
           <div className="size-fit">
             <TransparentButton title="Contáctanos" link="/contact" />

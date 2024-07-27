@@ -40,7 +40,7 @@ export const ServiceCardsData: Services[] = [
     alt: "woman making recording herself",
   },
   {
-    title: "Asesoria de Marketing",
+    title: "Asesoría de Marketing",
     cardNumber: "04 ",
     description:
       "Perfecto, si deseas obtener una guía y orientación sobre cómo desarrollar una estrategia de marketing efectiva para captar más clientes, fidelizar a los actuales o construir una imagen de marca sólida y reconocida en el mercado, estamos aquí para ayudarte.",
