@@ -2,7 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Terms and Conditions",
   robots: {
     index: false,
     follow: true,
@@ -11,12 +11,14 @@ export const metadata: Metadata = {
 
 export default function TermsAndConditions() {
   return (
-    <section className="terms-conditions">
-      <div className="container">
-        <div className="content">
-          <h1 className="title">Términos y Condiciones</h1>
+    <section className="flex-center-col size-full overflow-hidden">
+      <div className="flex-center-col mb-[120px] mt-[32px] h-fit w-full max-w-[1240px] gap-[40px]">
+        <h1 className="h1-small md:h1-big text-left text-text_color sm:text-center">
+          Términos y Condiciones
+        </h1>
+        <div className="flex-start-col h-fit w-full max-w-[1240px] gap-[32px]">
           <p className="text-16 text-text_400">
-            Bienvenido a BestSales, servicios ofrecidos por FZTH COMPANIES SPA. Al acceder o utilizar nuestros servicios de marketing digital, aceptas estos Términos y Condiciones (&quot;Términos&quot;), que regulan tu uso de nuestras plataformas y servicios. Estos Términos aplican a todos los visitantes, usuarios y otros que accedan o utilicen nuestros servicios de marketing digital.
+            Bienvenido a BestSales, servicios ofrecidos por FZTH COMPANIES SPA. Al acceder o utilizar nuestros servicios de marketing digital, aceptas estos Términos y Condiciones ("Términos"), que regulan tu uso de nuestras plataformas y servicios. Estos Términos aplican a todos los visitantes, usuarios y otros que accedan o utilicen nuestros servicios de marketing digital.
           </p>
 
           <h2 className="subtitle text-text_color">Requisitos de Edad</h2>
@@ -101,7 +103,7 @@ export default function TermsAndConditions() {
 
           <h2 className="subtitle text-text_color">Renuncias</h2>
           <p className="text-16 text-text_400">
-            El Servicio se proporciona &quot;tal cual&quot; y BestSales no garantiza su disponibilidad continua.
+            El Servicio se proporciona "tal cual" y BestSales no garantiza su disponibilidad continua.
           </p>
 
           <h2 className="subtitle text-text_color">Limitación de Responsabilidad</h2>
@@ -118,7 +120,7 @@ export default function TermsAndConditions() {
           <p className="text-16 text-text_400">
             BestSales no se hará responsable por:
           </p>
-          <ul className="text-16 text-text_400">
+          <ul className="list-disc ml-6">
             <li>Daños Indirectos: Pérdidas o daños que no se derivan directamente de tu uso de los servicios.</li>
             <li>Daños Incidentales: Daños que ocurren de forma inesperada o no intencional.</li>
             <li>Daños Especiales: Daños que son inusuales o no típicos que no se pueden prever fácilmente.</li>
@@ -128,31 +130,31 @@ export default function TermsAndConditions() {
           <p className="text-16 text-text_400">
             Esto incluye, pero no se limita a:
           </p>
-          <ul className="text-16 text-text_400">
+          <ul className="list-disc ml-6">
             <li>Pérdida de Beneficios: Cualquier pérdida de ingresos o ganancias esperadas.</li>
             <li>Pérdida de Datos: Pérdida de información o datos importantes.</li>
             <li>Pérdida de Uso: La incapacidad de usar o acceder a los servicios de la manera esperada.</li>
-            <li>Pérdida de Buena Voluntad: Pérdida de confianza o reputación.</li>
+            <li>Pérdida de Oportunidades: La pérdida de oportunidades de negocio o ganancias.</li>
+            <li>Interrupciones en el Servicio: Problemas técnicos que afectan la disponibilidad del servicio.</li>
           </ul>
+
+          <h2 className="subtitle text-text_color">Modificaciones</h2>
           <p className="text-16 text-text_400">
-            Estos daños pueden surgir de:
-          </p>
-          <ul className="text-16 text-text_400">
-            <li>Acceso o Uso de los Servicios: Problemas al acceder a los servicios o incapacidad para usarlos.</li>
-            <li>Conducta o Contenido de Terceros: Actos de terceros que se manifiestan en los servicios.</li>
-            <li>Contenido Obtenido a través de los Servicios: Información o material recibido mediante el uso de los servicios.</li>
-            <li>Acceso No Autorizado: Acceso, uso o alteración no permitida de tus datos o contenido.</li>
-          </ul>
-          <p className="text-16 text-text_400">
-            Esto es aplicable independientemente de si se basa en garantías, contratos, agravios (incluida la negligencia) o cualquier otra teoría legal, incluso si hemos sido informados sobre la posibilidad de tales daños.
+            BestSales puede modificar estos Términos en cualquier momento sin previo aviso. Las modificaciones serán efectivas inmediatamente después de su publicación en el sitio. Es tu responsabilidad revisar estos Términos periódicamente para estar al tanto de cualquier cambio. El uso continuado del Servicio después de la publicación de modificaciones constituye tu aceptación de los Términos revisados.
           </p>
 
-          <h2 className="subtitle text-text_color">Cambios en los Términos y Condiciones</h2>
+          <h2 className="subtitle text-text_color">Ley Aplicable</h2>
           <p className="text-16 text-text_400">
-            Nos reservamos el derecho de modificar o reemplazar estos Términos en cualquier momento y a nuestra entera discreción. Te notificaremos sobre cualquier cambio publicando los nuevos Términos en nuestro sitio web.
+            Estos Términos se regirán e interpretarán de acuerdo con las leyes de Chile, sin tener en cuenta sus principios sobre conflicto de leyes. Cualquier disputa derivada de o relacionada con estos Términos se resolverá exclusivamente en los tribunales competentes en Santiago, Chile.
+          </p>
+
+          <h2 className="subtitle text-text_color">Contacto</h2>
+          <p className="text-16 text-text_400">
+            Si tienes alguna pregunta sobre estos Términos, puedes contactarnos a <a href="https://www.thebestsales.co/contact" className="text-blue-600">https://www.thebestsales.co/contact</a>, o enviarnos un correo electrónico a <a href="mailto:contact@thebestsales.co" className="text-blue-600">contact@thebestsales.co</a>.
           </p>
         </div>
       </div>
     </section>
   );
 }
+
