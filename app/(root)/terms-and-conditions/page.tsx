@@ -33,8 +33,7 @@ export default function TermsAndConditions() {
 
           <h2 className="subtitle text-text_color">Servicios Ofrecidos</h2>
           <p className="text-16 text-text_400">
-            En BestSales, ofrecemos una gama completa de servicios de marketing digital que incluyen el manejo de campañas publicitarias, la creación y edición de anuncios, así como la producción de videos. También ofrecemos la venta de cursos especializados en marketing digital.
-            Todos los servicios de grabación deben ser pagados antes del inicio del servicio. Nos reservamos el derecho de seleccionar los cortes finales de los metrajes de anuncios. En caso de discrepancias, nosotros tomaremos la decisión final. No nos responsabilizamos por los resultados de las campañas si no se aceptan nuestras decisiones finales y nos reservamos el derecho de finalizar la colaboración sin ofrecer devoluciones.
+            En BestSales, ofrecemos una gama completa de servicios de marketing digital que incluyen el manejo de campañas publicitarias, la creación y edición de anuncios, así como la producción de videos. También ofrecemos la venta de cursos especializados en marketing digital. Todos los servicios de grabación deben ser pagados antes del inicio del servicio. Nos reservamos el derecho de seleccionar los cortes finales de los metrajes de anuncios. En caso de discrepancias, nosotros tomaremos la decisión final. No nos responsabilizamos por los resultados de las campañas si no se aceptan nuestras decisiones finales y nos reservamos el derecho de finalizar la colaboración sin ofrecer devoluciones.
           </p>
 
           <h2 className="subtitle text-text_color">Suscripciones</h2>
@@ -42,13 +41,13 @@ export default function TermsAndConditions() {
             <strong>Registro:</strong> Debes proporcionar información precisa y mantenerla actualizada.
           </p>
           <p className="text-16 text-text_400">
-            <strong>Suscripción:</strong> Renueva mensualmente. Debes cancelar en cualquier momento antes de la fecha de pago, si no se realiza este antes de la fecha estipulada BestSales podrá terminar el contrato sin previo aviso según las políticas de terminación por no pago.
+            <strong>Suscripción:</strong> Renueva mensualmente. Debes cancelar en cualquier momento antes de la fecha de pago; si no lo haces, BestSales podrá terminar el contrato sin previo aviso según las políticas de terminación por no pago.
           </p>
           <p className="text-16 text-text_400">
             <strong>Métodos de Pago:</strong> Incluyen tarjeta de crédito, débito, Webpay, transferencia bancaria o efectivo.
           </p>
           <p className="text-16 text-text_400">
-            <strong>Suspensión/Terminación:</strong> BestSales puede suspender o cancelar tu cuenta sin previo aviso en casos como retrasos en el pago mayor a 5 días hábiles o violaciones de los términos y condiciones.
+            <strong>Suspensión/Terminación:</strong> BestSales puede suspender o cancelar tu cuenta sin previo aviso en casos como retrasos en el pago mayores a 5 días hábiles o violaciones de los términos y condiciones.
           </p>
 
           <h2 className="subtitle text-text_color">Procesador de Pagos de Terceros</h2>
@@ -157,4 +156,3 @@ export default function TermsAndConditions() {
     </section>
   );
 }
-
