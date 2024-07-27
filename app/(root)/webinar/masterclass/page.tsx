@@ -71,7 +71,7 @@ const WebinarPage = () => {
     <section className="flex-center-col size-full overflow-hidden">
       <LazyMotion features={domAnimation}>
         <Hero
-          title="El PERFECTO embudo de ventas"
+          title="El embudo de ventas PERFECTO"
           alt="Marketing Video Webinar"
           video="https://player.vimeo.com/video/990412129?" // Change the video ID to the id of the webinar video
         />
