@@ -3,7 +3,7 @@ import React from "react";
 import { m } from "framer-motion";
 import { fadeIn, show } from "@/utils/motion";
 import useIsMobile from "@/hooks/useIsMobile";
-
+// s
 const AboutHero = () => {
   const isMobile = useIsMobile();
 
