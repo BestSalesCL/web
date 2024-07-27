@@ -54,7 +54,7 @@ export const FaqsWebinar: Faqs[] = [
     title:
       "08 - ¿Cómo garantizamos la calidad de nuestro trabajo?",
     content:
-      "Contamos con una política que garantiza que, si después de 30 días desde la contratación de nuestros servicios se demuestra que se aplicaron los conceptos y las ventas de las campañas de publicidad en Facebook e Instagram no presentan incrementos, se devolverá el 100% del dinero.",
+      "Contamos con una política que garantiza que, si después de 90 días desde la contratación de nuestros servicios se demuestra que se aplicaron los conceptos y las ventas de las campañas de publicidad en Facebook e Instagram no presentan incrementos, se devolverá el 100% del dinero.",
     value: "question-8",
   },
   {
