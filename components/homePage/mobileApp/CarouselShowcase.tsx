@@ -73,7 +73,7 @@ export default function CarouselShowcase() {
   }
 
   // Usa los cuatro videos restantes
-  const carouselUrls = urls.slice(1, 5);
+  const carouselUrls = urls.slice(1, 8);
 
   return (
     <m.div
