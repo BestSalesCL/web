@@ -16,7 +16,7 @@ export default function TermsAndConditions() {
         <div className="content">
           <h1 className="title">Términos y Condiciones</h1>
           <p className="text-16 text-text_400">
-            Bienvenido a BestSales, servicios ofrecidos por FZTH COMPANIES SPA. Al acceder o utilizar nuestros servicios de marketing digital, aceptas estos Términos y Condiciones ("Términos"), que regulan tu uso de nuestras plataformas y servicios. Estos Términos aplican a todos los visitantes, usuarios y otros que accedan o utilicen nuestros servicios de marketing digital.
+            Bienvenido a BestSales, servicios ofrecidos por FZTH COMPANIES SPA. Al acceder o utilizar nuestros servicios de marketing digital, aceptas estos Términos y Condiciones (&quot;Términos&quot;), que regulan tu uso de nuestras plataformas y servicios. Estos Términos aplican a todos los visitantes, usuarios y otros que accedan o utilicen nuestros servicios de marketing digital.
           </p>
 
           <h2 className="subtitle text-text_color">Requisitos de Edad</h2>
@@ -101,7 +101,7 @@ export default function TermsAndConditions() {
 
           <h2 className="subtitle text-text_color">Renuncias</h2>
           <p className="text-16 text-text_400">
-            El Servicio se proporciona "tal cual" y BestSales no garantiza su disponibilidad continua.
+            El Servicio se proporciona &quot;tal cual&quot; y BestSales no garantiza su disponibilidad continua.
           </p>
 
           <h2 className="subtitle text-text_color">Limitación de Responsabilidad</h2>
@@ -156,4 +156,3 @@ export default function TermsAndConditions() {
     </section>
   );
 }
-
