@@ -116,35 +116,35 @@ export default function TermsAndConditions() {
           </p>
 
           <h2 className="subtitle text-text_color">Exclusiones de Responsabilidad</h2>
-          <p className="text-16 text-text_400">
+          <p className="text-16 text-white"> {/* Ajustado a texto blanco */}
             BestSales no se hará responsable por:
           </p>
-          <ul className="list-disc ml-6">
+          <ul className="list-disc ml-6 text-white"> {/* Ajustado a texto blanco */}
             <li>Daños Indirectos: Pérdidas o daños que no se derivan directamente de tu uso de los servicios.</li>
             <li>Daños Incidentales: Daños que ocurren de forma inesperada o no intencional.</li>
             <li>Daños Especiales: Daños que son inusuales o no típicos que no se pueden prever fácilmente.</li>
             <li>Daños Consecuenciales: Pérdidas que resultan como una consecuencia indirecta de la imposibilidad de usar los servicios.</li>
             <li>Daños Punitivos: Daños destinados a castigar en lugar de compensar pérdidas.</li>
           </ul>
-          <p className="text-16 text-text_400">
+          <p className="text-16 text-white"> {/* Ajustado a texto blanco */}
             Esto incluye, pero no se limita a:
           </p>
-          <ul className="list-disc ml-6">
+          <ul className="list-disc ml-6 text-white"> {/* Ajustado a texto blanco */}
             <li>Pérdida de Beneficios: Cualquier pérdida de ingresos o ganancias esperadas.</li>
             <li>Pérdida de Datos: Pérdida de información o datos importantes.</li>
             <li>Pérdida de Uso: La incapacidad de usar o acceder a los servicios de la manera esperada.</li>
             <li>Pérdida de Buena Voluntad: Pérdida de confianza o reputación.</li>
           </ul>
-          <p className="text-16 text-text_400">
+          <p className="text-16 text-white"> {/* Ajustado a texto blanco */}
             Estos daños pueden surgir de:
           </p>
-          <ul className="list-disc ml-6">
+          <ul className="list-disc ml-6 text-white"> {/* Ajustado a texto blanco */}
             <li>Acceso o Uso de los Servicios: Problemas al acceder a los servicios o incapacidad para usarlos.</li>
             <li>Conducta o Contenido de Terceros: Actos de terceros que se manifiestan en los servicios.</li>
             <li>Contenido Obtenido a través de los Servicios: Información o material recibido mediante el uso de los servicios.</li>
             <li>Acceso No Autorizado: Acceso, uso o alteración no permitida de tus datos o contenido.</li>
           </ul>
-          <p className="text-16 text-text_400">
+          <p className="text-16 text-white"> {/* Ajustado a texto blanco */}
             Esto es aplicable independientemente de si se basa en garantías, contratos, agravios (incluida la negligencia) o cualquier otra teoría legal, incluso si hemos sido informados sobre la posibilidad de tales daños.
           </p>
 
