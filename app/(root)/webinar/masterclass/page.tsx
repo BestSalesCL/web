@@ -61,7 +61,7 @@ const WebinarPage = () => {
         } else {
           console.log("Event sent successfully to Facebook", data);
         }
-      }, 60000); // 1 minute in milliseconds
+      }, 10000); // 1 minute in milliseconds
 
       return () => clearTimeout(timer); // Cleanup the timer on component unmount
     }
@@ -75,7 +75,7 @@ const WebinarPage = () => {
           alt="Marketing Video Webinar"
           video="https://player.vimeo.com/video/990412129?" // Change the video ID to the id of the webinar video
         />
-        <DelayComponent delay={1200000}>
+        <DelayComponent delay={10000}>
           <Reviews />
           {/* <Pricing /> */}
           <ContactHero />
