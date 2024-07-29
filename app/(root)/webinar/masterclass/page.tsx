@@ -75,7 +75,7 @@ const WebinarPage = () => {
           alt="Marketing Video Webinar"
           video="https://player.vimeo.com/video/990412129?" // Change the video ID to the id of the webinar video
         />
-        <DelayComponent delay={10000}>
+        <DelayComponent delay={60000}>
           <Reviews />
           {/* <Pricing /> */}
           <ContactHero />
