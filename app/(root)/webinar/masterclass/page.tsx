@@ -73,7 +73,7 @@ const WebinarPage = () => {
         <Hero
           title="El embudo de ventas PERFECTO"
           alt="Marketing Video Webinar"
-          video="https://player.vimeo.com/video/990412129?" // Change the video ID to the id of the webinar video
+          video="https://player.vimeo.com/video/992697391?" // Change the video ID to the id of the webinar video
         />
         <DelayComponent delay={60000}>
           <Reviews />
