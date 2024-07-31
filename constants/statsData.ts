@@ -16,14 +16,14 @@ type Stats = {
 
 export const StatsData: Stats[] = [
   {
-    name: "Anuncios Activos",
+    name: "Anuncios Administrados",
     image: dumbbell,
     alt: "dumbbell icon",
     number: 2000,
     pre: "+",
   },
   {
-    name: "Clientes Captados",
+    name: "Personas Alcanzadas",
     image: stats,
     alt: "sports icon",
     number: 3,
