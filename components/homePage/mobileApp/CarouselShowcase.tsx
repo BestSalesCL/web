@@ -10,7 +10,6 @@ import {
 import { fadeIn, show } from "@/utils/motion";
 import { m } from "framer-motion";
 import useIsMobile from "@/hooks/useIsMobile";
-import useVideoUrl from "@/hooks/useVideoUrl";  // Importa el hook correctamente
 
 interface VideoComponentProps {
   url: string;
@@ -61,19 +60,18 @@ const VideoLoadingState: React.FC = () => {
 };
 
 export default function CarouselShowcase() {
-  const { urls, loading, error } = useVideoUrl();
   const isMobile = useIsMobile();
 
-  if (loading) {
-    return <VideoLoadingState />;
-  }
-
-  if (error) {
-    return <div>Error loading videos: {error.message}</div>;
-  }
-
-  // Usa los cuatro videos restantes
-  const carouselUrls = urls.slice(1, 8);
+  // Define las rutas de los videos directamente
+  const carouselUrls = [
+    "/assets/videos/add1.mp4",
+    "/assets/videos/add2.mp4",
+    "/assets/videos/add3.mp4",
+    "/assets/videos/add4.mp4",
+    "/assets/videos/add5.mp4",
+    "/assets/videos/add6.mp4",
+    "/assets/videos/add7.mp4",
+  ];
 
   return (
     <m.div

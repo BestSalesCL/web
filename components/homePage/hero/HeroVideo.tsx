@@ -1,13 +1,7 @@
 import React, { Suspense } from "react";
-import useVideoUrl from "@/hooks/useVideoUrl";
 
 const VideoComponent: React.FC = () => {
-  const { urls, loading, error } = useVideoUrl();
-
-  if (loading) return <VideoLoadingState />;
-  if (error) return <div>Error loading video: {error.message}</div>;
-
-  const videoUrl = urls[0];  // Usa la primera URL
+  const videoUrl = "/assets/videos/herovideo.mp4";  // Ruta del archivo de video
 
   return (
     <div className="flex-center size-full min-h-full overflow-hidden">
