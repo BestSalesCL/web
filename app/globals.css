@@ -162,6 +162,7 @@ body {
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
 }
 
+/* Estilos del scrollbar para pantallas grandes */
 @media (min-width: 1280px) {
   ::-webkit-scrollbar {
     width: 3px;
@@ -180,5 +181,16 @@ body {
     transition: all 0.3s ease-out;
     background: #ebf1ff;
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Ajustes para el botón de Unmute en dispositivos móviles */
+@media (max-width: 768px) {
+  .video-mute-button {
+    bottom: 10px;
+    right: 10px;
+    transform: none;
+    padding: 8px;
+    font-size: 12px;
   }
 }

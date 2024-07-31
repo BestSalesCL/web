@@ -43,7 +43,8 @@ const VideoComponent: React.FC<VideoComponentProps> = ({ url }) => {
       </video>
       <button
         onClick={toggleMute}
-        className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded"
+        className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded z-10"
+        style={{ transform: 'translate(50%, -50%)' }}
       >
         {muted ? "Unmute" : "Mute"}
       </button>
