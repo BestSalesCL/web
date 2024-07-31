@@ -29,9 +29,9 @@ const VimeoEmbed: React.FC<VimeoEmbedProps> = ({ videoUrl, height }) => {
 
 const VideoCarousel = () => {
   const videos = [
-    { videoId: "https://player.vimeo.com/video/990450318?", reviewTitle: "Testimonial 1" },
-    { videoId: "https://player.vimeo.com/video/990433186?", reviewTitle: "Testimonial 2" },
-    { videoId: "https://player.vimeo.com/video/990433163?", reviewTitle: "Testimonial 3" },
+    { videoId: "https://player.vimeo.com/video/992704132?", reviewTitle: "Testimonial 1" },
+    { videoId: "https://player.vimeo.com/video/992704791?", reviewTitle: "Testimonial 2" },
+    { videoId: "https://player.vimeo.com/video/992702207?", reviewTitle: "Testimonial 3" },
 
   ];
 
